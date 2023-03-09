@@ -1,5 +1,6 @@
 <template>
   <v-card>
+    <h1 class="text-center"> list of databases </h1>
     <v-data-table
       :headers="headers"
       :items="usreList"
@@ -40,30 +41,24 @@ export default {
   setup() {
     const statusColor = {
       /* eslint-disable key-spacing */
-      Current: 'primary',
-      Professional: 'success',
-      Rejected: 'error',
-      Resigned: 'warning',
-      Applied: 'info',
+      new: 'info',
+      progress: 'primary',
+      checked: 'success',
       /* eslint-enable key-spacing */
     }
 
     return {
       headers: [
-        { text: 'NAME', value: 'full_name' },
-        { text: 'EMAIL', value: 'email' },
-        { text: 'DATE', value: 'start_date' },
-        { text: 'SALARY', value: 'salary' },
-        { text: 'AGE', value: 'age' },
+        { text: 'Name', value: 'full_name' },
+        { text: 'File', value: 'file' },
+        { text: 'Comment', value: 'comment' },
         { text: 'STATUS', value: 'status' },
       ],
       usreList: data,
       status: {
-        1: 'Current',
-        2: 'Professional',
-        3: 'Rejected',
-        4: 'Resigned',
-        5: 'Applied',
+        0: 'new',
+        1: 'progress',
+        2: 'checked', 
       },
       statusColor,
 

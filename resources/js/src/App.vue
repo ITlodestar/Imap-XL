@@ -1,7 +1,6 @@
 <template>
-  <component :is="resolveLayout"  >
-    <router-view></router-view>
-    <upgrade-to-pro></upgrade-to-pro>
+  <component :is="resolveLayout" >
+    <router-view></router-view> 
   </component>
 </template>
 
@@ -9,14 +8,12 @@
 import { computed } from '@vue/composition-api'
 import { useRouter } from '@/utils'
 import LayoutBlank from '@/layouts/Blank.vue'
-import LayoutContent from '@/layouts/Content.vue'
-import UpgradeToPro from './components/UpgradeToPro.vue'
+import LayoutContent from '@/layouts/Content.vue' 
 
 export default {
   components: {
     LayoutBlank,
-    LayoutContent,
-    UpgradeToPro,
+    LayoutContent, 
   },
   setup() {
     const { route } = useRouter()
