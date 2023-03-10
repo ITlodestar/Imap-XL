@@ -3,7 +3,7 @@
     <h1 class="text-center"> list of databases </h1>
     <v-data-table
       :headers="headers"
-      :items="usreList"
+      :items="userList"
       item-key="full_name"
       class="table-rounded"
       hide-default-footer
@@ -54,7 +54,7 @@ export default {
         { text: 'Comment', value: 'comment' },
         { text: 'STATUS', value: 'status' },
       ],
-      usreList: data,
+      userList: data,
       status: {
         0: 'new',
         1: 'progress',

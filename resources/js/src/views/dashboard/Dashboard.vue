@@ -11,7 +11,7 @@
 
 <script>
 
-import AccountSettingsAccount from './AccountSettingsAccount.vue';
+import AccountSettingsAccount from './upload.vue';
 import DashboardDatatable from './DashboardDatatable.vue';
 
 export default {

@@ -30,8 +30,8 @@
     <v-list expand shaped class="vertical-nav-menu-items pr-5">
       <nav-menu-section-title title="USER INTERFACE"></nav-menu-section-title>
       <nav-menu-link title="Databases" :to="{ name: 'dashboard' }" :icon="icons.mdiHomeOutline"></nav-menu-link> 
-      <nav-menu-link title="Keywords" :to="{ name: 'typography' }" :icon="icons.mdiAlphaTBoxOutline"></nav-menu-link>
-      <nav-menu-link title="Saved Emails" :to="{ name: 'icons' }" :icon="icons.mdiEyeOutline"></nav-menu-link>
+      <nav-menu-link title="Keywords" :to="{ name: 'keywords' }" :icon="icons.mdiAlphaTBoxOutline"></nav-menu-link>
+      <nav-menu-link title="Saved Emails" :to="{ name: 'saveemail' }" :icon="icons.mdiEmail"></nav-menu-link>
     </v-list>
   </v-navigation-drawer>
 </template>
@@ -41,13 +41,9 @@
 import {
   mdiHomeOutline,
   mdiAlphaTBoxOutline,
-  mdiEyeOutline,
-  mdiCreditCardOutline,
-  mdiTable,
-  mdiFileOutline,
-  mdiFormSelect,
-  mdiAccountCogOutline,
+  mdiEmail
 } from '@mdi/js'
+
 import NavMenuSectionTitle from './components/NavMenuSectionTitle.vue'
 import NavMenuGroup from './components/NavMenuGroup.vue'
 import NavMenuLink from './components/NavMenuLink.vue'
@@ -69,12 +65,7 @@ export default {
       icons: {
         mdiHomeOutline,
         mdiAlphaTBoxOutline,
-        mdiEyeOutline,
-        mdiCreditCardOutline,
-        mdiTable,
-        mdiFileOutline,
-        mdiFormSelect,
-        mdiAccountCogOutline,
+        mdiEmail
       },
     }
   },
