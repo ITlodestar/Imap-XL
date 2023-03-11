@@ -28,10 +28,15 @@
 
     <!-- Navigation Items -->
     <v-list expand shaped class="vertical-nav-menu-items pr-5">
-      <nav-menu-section-title title="USER INTERFACE"></nav-menu-section-title>
+      <nav-menu-section-title title="Use Interface"></nav-menu-section-title>
       <nav-menu-link title="Databases" :to="{ name: 'dashboard' }" :icon="icons.mdiHomeOutline"></nav-menu-link> 
       <nav-menu-link title="Keywords" :to="{ name: 'keywords' }" :icon="icons.mdiAlphaTBoxOutline"></nav-menu-link>
       <nav-menu-link title="Saved Emails" :to="{ name: 'saveemail' }" :icon="icons.mdiEmail"></nav-menu-link>
+    </v-list>
+    <v-list expand shaped class="vertical-nav-menu-items pr-5">
+      <nav-menu-section-title title="Admin Panel"></nav-menu-section-title>
+      <nav-menu-link title="Users" :to="{ name: 'adminusers' }" :icon="icons.mdiAccountCogOutline"></nav-menu-link> 
+      <nav-menu-link title="Settings" :to="{ name: 'adminsettings' }" :icon="icons.mdiCogOutline"></nav-menu-link> 
     </v-list>
   </v-navigation-drawer>
 </template>
@@ -41,7 +46,9 @@
 import {
   mdiHomeOutline,
   mdiAlphaTBoxOutline,
-  mdiEmail
+  mdiEmail,
+  mdiAccountCogOutline,
+  mdiCogOutline
 } from '@mdi/js'
 
 import NavMenuSectionTitle from './components/NavMenuSectionTitle.vue'
@@ -65,7 +72,9 @@ export default {
       icons: {
         mdiHomeOutline,
         mdiAlphaTBoxOutline,
-        mdiEmail
+        mdiEmail,
+        mdiCogOutline,
+        mdiAccountCogOutline
       },
     }
   },

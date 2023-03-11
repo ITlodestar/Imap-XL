@@ -19,6 +19,17 @@ const routes = [
     component: () => import('@/views/Keywords/Keywords.vue'),
   },
   {
+    path: '/admin/users',
+    name: 'adminusers',
+    component: () => import('@/views/Admin/users/Dashboard.vue'),
+  },
+  // Admin
+  {
+    path: '/admin/settings',
+    name: 'adminsettings',
+    component: () => import('@/views/Admin/settings/AccountSettings.vue'),
+  },
+  {
     path: '/saveemail',
     name: 'saveemail',
     component: () => import('@/views/SaveEmail/SaveEmail.vue'),

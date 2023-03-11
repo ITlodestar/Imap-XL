@@ -4,27 +4,24 @@
       <thead>
         <tr>
           <th class="text-uppercase">
-            Dessert (100g serving)
+            Subject
           </th>
           <th class="text-center text-uppercase">
-            Calories
+            from
           </th>
           <th class="text-center text-uppercase">
-            Fat (g)
+            to
           </th>
           <th class="text-center text-uppercase">
-            Carbs (g)
+            Date
           </th>
           <th class="text-center text-uppercase">
-            Protein (g)
-          </th>
+            
+          </th> 
         </tr>
       </thead>
       <tbody>
-        <tr
-          v-for="item in desserts"
-          :key="item.dessert"
-        >
+        <tr v-for="item in desserts" :key="item.dessert">
           <td>{{ item.dessert }}</td>
           <td class="text-center">
             {{ item.calories }}
@@ -35,9 +32,15 @@
           <td class="text-center">
             {{ item.carbs }}
           </td>
-          <td class="text-center">
-            {{ item.protein }}
-          </td>
+          
+          <td> 
+            <v-btn variant="flat" color="success">
+              Append
+            </v-btn>
+            <v-btn variant="flat" color="info">
+              Edit
+            </v-btn>
+          </td> 
         </tr>
       </tbody>
     </template>

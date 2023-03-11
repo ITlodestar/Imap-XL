@@ -5,7 +5,6 @@
         {{ icon || alternateIcon }}
       </v-icon>
     </v-list-item-icon>
-
     <v-list-item-title>
       {{ title }}
     </v-list-item-title>

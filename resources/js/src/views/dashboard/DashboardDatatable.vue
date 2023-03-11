@@ -12,8 +12,7 @@
       <!-- name -->
       <template #[`item.full_name`]="{item}">
         <div class="d-flex flex-column">
-          <span class="d-block font-weight-semibold text--primary text-truncate">{{ item.full_name }}</span>
-          <small>{{ item.post }}</small>
+          <span class="d-block font-weight-semibold text--primary text-truncate">{{ item.full_name }}</span> 
         </div>
       </template>
       <template #[`item.salary`]="{item}">
