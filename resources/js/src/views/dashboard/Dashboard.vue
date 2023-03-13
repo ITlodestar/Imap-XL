@@ -10,9 +10,10 @@
 </template>
 
 <script>
-
+import { mapActions } from 'vuex';
 import AccountSettingsAccount from './upload.vue';
 import DashboardDatatable from './DashboardDatatable.vue';
+
 
 export default {
   components: {
@@ -45,5 +46,14 @@ export default {
       accountSettingData
     }
   },
+  mounted: function() { 
+    this.getDatabase();
+    
+  },
+  methods: {
+    ...mapActions({
+      getDatabase: 'getDatabase'
+    })
+  }
 }
 </script>

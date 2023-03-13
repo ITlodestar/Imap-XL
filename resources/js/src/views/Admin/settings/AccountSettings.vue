@@ -1,5 +1,5 @@
 <template>
-  <v-card id="account-setting-card">
+  <v-card  >
     <!-- tabs -->
     <v-tabs v-model="tab" show-arrows>
       <v-tab v-for="tab in tabs" :key="tab.icon">
@@ -13,75 +13,45 @@
     <!-- tabs item -->
     <v-tabs-items v-model="tab">
       <v-tab-item>
-        <account-settings-account :account-data="accountSettingData.account"></account-settings-account>
+        <list-settings ></list-settings>
       </v-tab-item>
 
       <v-tab-item>
-        <account-settings-security></account-settings-security>
+        <table-settings></table-settings>
       </v-tab-item>
-
-      <v-tab-item>
-        <account-settings-info :information-data="accountSettingData.information"></account-settings-info>
-      </v-tab-item>
+ 
     </v-tabs-items>
   </v-card>
 </template>
 
 <script>
-import { mdiAccountOutline, mdiLockOpenOutline, mdiInformationOutline } from '@mdi/js'
+import { mdiViewList , mdiTableCog } from '@mdi/js'
 import { ref } from '@vue/composition-api'
 
 // demos
-import AccountSettingsAccount from './AccountSettingsAccount.vue'
-import AccountSettingsSecurity from './AccountSettingsSecurity.vue'
-import AccountSettingsInfo from './AccountSettingsInfo.vue'
+import ListSettings from './ListSettings.vue' 
+import TableSettings from './TableSettings.vue'
 
 export default {
   components: {
-    AccountSettingsAccount,
-    AccountSettingsSecurity,
-    AccountSettingsInfo,
+    ListSettings,
+    TableSettings
   },
   setup() {
     const tab = ref('')
 
     // tabs
     const tabs = [
-      { title: 'Account', icon: mdiAccountOutline },
-      { title: 'Security', icon: mdiLockOpenOutline },
-      { title: 'Info', icon: mdiInformationOutline },
+      { title: 'list of setting', icon: mdiViewList }, 
+      { title: 'table settings', icon: mdiTableCog },
     ]
-
-    // account settings data
-    const accountSettingData = {
-      account: {
-        avatarImg: require('@/assets/images/avatars/1.png').default,
-        username: 'johnDoe',
-        name: 'john Doe',
-        email: 'johnDoe@example.com',
-        role: 'Admin',
-        status: 'Active',
-        company: 'Google.inc',
-      },
-      information: {
-        bio: 'The name’s John Deo. I am a tireless seeker of knowledge, occasional purveyor of wisdom and also, coincidentally, a graphic designer. Algolia helps businesses across industries quickly create relevant 😎, scaLabel 😀, and lightning 😍 fast search and discovery experiences.',
-        birthday: 'February 22, 1995',
-        phone: '954-006-0844',
-        website: 'https://themeselection.com/',
-        country: 'USA',
-        languages: ['English', 'Spanish'],
-        gender: 'male',
-      },
-    }
 
     return {
       tab,
       tabs,
-      accountSettingData,
       icons: {
-        mdiAccountOutline,
-        mdiLockOpenOutline,
-        mdiInformationOutline,
+        mdiViewList, 
+        mdiTableCog
       },
     }
   },

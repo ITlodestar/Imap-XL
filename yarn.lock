@@ -10430,7 +10430,7 @@
   "resolved" "https://registry.npmjs.org/vuetifyjs-mix-extension/-/vuetifyjs-mix-extension-0.0.20.tgz"
   "version" "0.0.20"
 
-"vuex@^3.4.0":
+"vuex@^3.6.2":
   "integrity" "sha512-ETW44IqCgBpVomy520DT5jf8n0zoCac+sxWnn+hMe/CzaSejb/eVw2YToiXYX+Ex/AuHHia28vWTq4goAexFbw=="
   "resolved" "https://registry.npmjs.org/vuex/-/vuex-3.6.2.tgz"
   "version" "3.6.2"
