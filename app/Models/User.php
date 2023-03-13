@@ -47,4 +47,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Database::class);
     }
+    public function keywords(): HasMany
+    {
+        return $this->hasMany(Userkeywords::class);
+    }
 }

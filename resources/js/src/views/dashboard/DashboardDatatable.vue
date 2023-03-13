@@ -49,10 +49,10 @@ export default {
 
     return {
       headers: [
-        { text: 'Name', value: 'name' },
-        { text: 'File', value: 'filename' },
-        { text: 'Comment', value: 'comment' },
-        { text: 'status', value: 'status' },
+        { text: 'Name', value: 'name' , align: 'center'},
+        { text: 'File', value: 'filename' , align: 'center'},
+        { text: 'Comment', value: 'comment', align: 'center' },
+        { text: 'status', value: 'status' , align: 'center'},
       ],
      
       status: {

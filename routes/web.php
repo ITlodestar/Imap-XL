@@ -1,8 +1,10 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\DatabaseController;
+use App\Http\Controllers\KeywordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,8 @@ use App\Http\Controllers\DatabaseController;
 |
 */
 Route::get('/api/getDatabase', [DatabaseController::class, 'getdatabase']);
+Route::get('/api/getKeywords', [KeywordController::class, 'getkeywords']);
 
+ // Vue Route..
 Route::get('/{any}', [ApplicationController::class, 'index'])->where('any', '.*');
 

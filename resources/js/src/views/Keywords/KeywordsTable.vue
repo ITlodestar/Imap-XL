@@ -2,13 +2,15 @@
   <v-card>
     <v-data-table 
       :headers="headers" 
-      :items="keylist" 
+      :items="keywords" 
       item-key="id" 
-      class="table-rounded" hide-default-footer
+      class=" " 
+      style="text-align: center !important;"
+      hide-default-footer
       disable-sort>
       <!-- name -->
       <template #[`item.keyword`]="{ item }">
-        <div class="d-flex flex-column">
+        <div class="d-flex align-center  justify-center">
           <span>{{ item.keyword }}</span>
         </div>
       </template>
@@ -24,16 +26,18 @@
 </template>
 
 <script>
-import data from './keyword';
+ 
 
 export default {
+  props: [
+    'keywords'
+  ],
   setup() {
     return {
       headers: [
-        { text: 'keyword', value: 'keyword' },
+        { text: 'keyword', value: 'keyword', align: 'center'},
         { text: ' ', value: 'delete' }
       ],
-      keylist: data
     }
   }
 }

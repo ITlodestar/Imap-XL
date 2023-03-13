@@ -6,11 +6,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    database: []
+    database: [],
+    keywords: []
   },
   mutations: {
     setDatabase: (state, database) => {
       state.database = database;
+    },
+    setKeywords: (state, keywords) => {
+      state.keywords = keywords;
     }
   },
   actions: {
@@ -20,8 +24,19 @@ export default new Vuex.Store({
           .then(res => {
             commit('setDatabase', res.data)
           })
+          .catch(error => console.log(error))
         }
     },
+    async getKeywords({ commit }) {
+      if (this.state.keywords == '') {
+        return await axios.get(`/api/getKeywords`)
+          .then(res => {
+            console.log(res.data);
+            commit('setKeywords', res.data)
+          })
+          .catch(error => console.log(error))
+        }
+    }
   },
   modules: {},
 })

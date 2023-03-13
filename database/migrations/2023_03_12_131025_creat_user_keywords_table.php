@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_keyword', function (Blueprint $table) {
+        Schema::create('user_keywords', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
             $table->string('keyword');

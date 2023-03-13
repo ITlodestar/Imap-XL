@@ -44,13 +44,11 @@ export default {
     }
 
     return {
-      
       accountSettingData
     }
   },
-  mounted: function () {
+  created: function () { 
     this.getDatabase();
-
   },
   methods: {
     ...mapActions({
