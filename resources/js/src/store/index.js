@@ -1,19 +1,26 @@
 import Vue from 'vue'
-import Vuex from 'vuex' 
+import Vuex from 'vuex'
 import axios from 'axios'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    database: []
+  },
+  mutations: {
+    setDatabase: (state, database) => {
+      state.database = database;
+    }
+  },
   actions: {
-    getDatabase({commit}) {
-      console.log("getDatabase");
-      return axios.get('api/getDatabase')
-      .then(res => {
-        console.log(res.data);
-      })
+    async getDatabase({ commit }) {
+      if (this.state.database == '') {
+        return await axios.get(`/api/getDatabase`)
+          .then(res => {
+            commit('setDatabase', res.data)
+          })
+        }
     },
   },
   modules: {},

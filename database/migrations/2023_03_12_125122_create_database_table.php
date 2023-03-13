@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('database', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('email_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->string('name');
             $table->string('filename');
             $table->string('comment');

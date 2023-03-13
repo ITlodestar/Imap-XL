@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\DatabaseController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +14,7 @@ use App\Http\Controllers\ApplicationController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/api/getDatabase', [DatabaseController::class, 'getdatabase']);
 
 Route::get('/{any}', [ApplicationController::class, 'index'])->where('any', '.*');
-
 

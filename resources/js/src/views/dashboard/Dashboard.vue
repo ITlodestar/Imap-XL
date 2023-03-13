@@ -3,14 +3,14 @@
     <v-col cols="12">
       <account-settings-account :account-data="accountSettingData.account"></account-settings-account>
     </v-col>
-    <v-col cols="12">
-      <dashboard-datatable></dashboard-datatable>
+    <v-col cols="12"> 
+      <dashboard-datatable :data="this.database"></dashboard-datatable>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import AccountSettingsAccount from './upload.vue';
 import DashboardDatatable from './DashboardDatatable.vue';
 
@@ -21,6 +21,7 @@ export default {
     DashboardDatatable,
   },
   setup() {
+   
     const accountSettingData = {
       account: {
         avatarImg: require('@/assets/images/avatars/1.png').default,
@@ -43,17 +44,23 @@ export default {
     }
 
     return {
+      
       accountSettingData
     }
   },
-  mounted: function() { 
+  mounted: function () {
     this.getDatabase();
-    
+
   },
   methods: {
     ...mapActions({
       getDatabase: 'getDatabase'
-    })
+    }),
+  },
+  computed: {
+    ...mapState([
+      'database'
+    ])
   }
 }
 </script>

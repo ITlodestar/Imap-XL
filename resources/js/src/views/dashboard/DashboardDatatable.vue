@@ -3,12 +3,13 @@
     <h1 class="text-center"> list of databases </h1>
     <v-data-table
       :headers="headers"
-      :items="userList"
+      :items="data"
       item-key="full_name"
       class="table-rounded"
       hide-default-footer
       disable-sort
     >
+     
       <!-- name -->
       <template #[`item.full_name`]="{item}">
         <div class="d-flex flex-column">
@@ -34,9 +35,9 @@
 
 <script>
 import { mdiSquareEditOutline, mdiDotsVertical } from '@mdi/js'
-import data from './datatable-data'
 
 export default {
+  props: ['data'],
   setup() {
     const statusColor = {
       /* eslint-disable key-spacing */
@@ -48,15 +49,15 @@ export default {
 
     return {
       headers: [
-        { text: 'Name', value: 'full_name' },
-        { text: 'File', value: 'file' },
+        { text: 'Name', value: 'name' },
+        { text: 'File', value: 'filename' },
         { text: 'Comment', value: 'comment' },
-        { text: 'STATUS', value: 'status' },
+        { text: 'status', value: 'status' },
       ],
-      userList: data,
+     
       status: {
-        0: 'new',
-        1: 'progress',
+        0: 'progress',
+        1: 'new',
         2: 'checked', 
       },
       statusColor,
