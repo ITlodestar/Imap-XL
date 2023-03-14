@@ -4,7 +4,7 @@
     <v-card-text class="d-flex justify-center align-item-center">
       <v-row>
         <v-col cols="12" md="6" class="d-sm-flex justify-end position-relative">
-          <v-img contain max-width="170"  :src="require('@/assets/images/pro/images.png').default"
+          <v-img contain max-width="170"  :src="require('@/assets/images/pro/uploadimage.png').default"
             class="security-character rounded"></v-img>
         </v-col>
         <v-col cols="12" md="6">
