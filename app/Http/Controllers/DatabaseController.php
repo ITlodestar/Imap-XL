@@ -13,7 +13,6 @@ class DatabaseController extends Controller
         $database = User::find(1)-> databases;
         $data = [];
         foreach ($database as $value) {
-            
             array_push($data, $value);
         }
         return $data;

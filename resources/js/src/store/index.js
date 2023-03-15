@@ -17,7 +17,7 @@ export default new Vuex.Store({
     setKeywords: (state, keywords) => {
       state.keywords = keywords;
     },
-    addTask: (state, data) => {
+    addTaks: (state, data) => {
       state.database.push(data)
     }
   },

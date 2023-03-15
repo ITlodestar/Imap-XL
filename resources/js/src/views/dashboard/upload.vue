@@ -76,18 +76,18 @@ export default {
     const importData = (e) => {
       file = e.target.files[0] || e.dataTransfer.files[0];
 
-      // const reader = new FileReader();
-      // reader.readAsText(file);
+      const reader = new FileReader();
+      reader.readAsText(file);
 
-      // reader.onload = async () => {
-      //   loading.value = true;
-      //   const r = reader.result?.toString();
-      //   if (r != null) {
-      //     // console.log(r);
-      //   }
-      //   loading.value = false;
-      //   fileupload.value = true;
-      // };
+      reader.onload = async () => {
+        loading.value = true;
+        const r = reader.result?.toString();
+        if (r != null) {
+          // console.log(r);
+        }
+        loading.value = false;
+        fileupload.value = true;
+      };
 
     };
 
@@ -136,8 +136,6 @@ export default {
       },
     };
   },
-  ...mapMutations({
-      addTask: 'addTaks' // map `this.add()` to `this.$store.commit('increment')`
-  })
+ 
 }
 </script>
