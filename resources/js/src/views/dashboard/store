@@ -53,7 +53,7 @@
 
 import { mdiAlertOutline, mdiCloudUploadOutline, mdiCancel } from '@mdi/js'
 import { ref } from '@vue/composition-api'
-import store from '../../store'
+
 import axios from 'axios'
 
 export default {
@@ -63,8 +63,7 @@ export default {
       default: () => { },
     },
   },
-  store,
-  setup(props, context) {
+  setup() {
 
     let file = ref(null);
     let Comment = ref(null);
@@ -92,39 +91,12 @@ export default {
 
     };
 
-    const Upload = () => {
 
-      let data = new FormData();
-      data.append('file', file);
-      data.append('comment', JSON.stringify(Comment));
-
-      axios.post('/uploadfile',
-        data,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }
-      ).then(res => {
-
-        let addtask = {
-          name: 'text',
-          filename: file.name,
-          comment: Comment.value,
-          status: 0
-        }
-        store.commit('addTaks', addtask)
-        UploadCancel();
-      }).catch(function () {
-          console.log('FAILURE!!');
-        });
-
-    }
     const UploadCancel = () => {
-      file.value = '';
+      file.value = null;
       fileupload.value = false;
       Comment.value = '';
-      document.getElementById('uploadtxt').value('');
+      document.getElementById('uploadtxt').value = '';
     }
 
     return {
@@ -134,7 +106,6 @@ export default {
       successupload,
       importData,
       UploadCancel,
-      Upload,
       icons: {
         mdiCancel,
         mdiAlertOutline,
@@ -142,6 +113,37 @@ export default {
       },
     };
   },
+  methods: {
+    Upload() {
+      let addtask = {
+        name: 'text',
+        filename: "text.txt",
+        comment: 'sdfsdf',
+        status: 0
+      }
+      this.$store.commit('addTaks', addtask)
 
+      // let data = new FormData();
+      // data.append('file', file);
+      // data.append('comment', JSON.stringify(Comment));
+
+      // axios.post('/uploadfile',
+      //   data,
+      //   {
+      //     headers: {
+      //       'Content-Type': 'multipart/form-data'
+      //     }
+      //   }
+      // ).then(res => {
+      //   console.log(res.data);
+
+      //   UploadCancel();
+      // })
+      //   .catch(function () {
+      //     console.log('FAILURE!!');
+      //   });
+
+    }
+  }
 }
 </script>

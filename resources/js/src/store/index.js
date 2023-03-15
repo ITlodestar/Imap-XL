@@ -4,7 +4,7 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store =  new Vuex.Store({
   state: {
     database: [],
     keywords: []
@@ -40,8 +40,9 @@ export default new Vuex.Store({
           })
           .catch(error => console.log(error))
       }
-    }
-
+    },
+    
   },
   modules: {},
 })
+export default store;
