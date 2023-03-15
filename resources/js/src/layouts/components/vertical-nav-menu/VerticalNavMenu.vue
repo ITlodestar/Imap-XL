@@ -31,7 +31,7 @@
       <nav-menu-section-title title="Use Interface"></nav-menu-section-title>
       <nav-menu-link title="Databases" :to="{ name: 'dashboard' }" :icon="icons.mdiHomeOutline"></nav-menu-link> 
       <nav-menu-link title="Keywords" :to="{ name: 'keywords' }" :icon="icons.mdiAlphaTBoxOutline"></nav-menu-link>
-      <nav-menu-link title="Saved Emails" :to="{ name: 'saveemail' }" :icon="icons.mdiEmail"></nav-menu-link>
+      <nav-menu-link title="Saved Emails" :to="{ name: 'saveemail' }" :icon="icons.mdiEmailEditOutline"></nav-menu-link>
     </v-list>
     <v-list expand shaped class="vertical-nav-menu-items pr-5">
       <nav-menu-section-title title="Admin Panel"></nav-menu-section-title>
@@ -46,7 +46,7 @@
 import {
   mdiHomeOutline,
   mdiAlphaTBoxOutline,
-  mdiEmail,
+  mdiEmailEditOutline,
   mdiAccountCogOutline,
   mdiCogOutline
 } from '@mdi/js'
@@ -72,7 +72,7 @@ export default {
       icons: {
         mdiHomeOutline,
         mdiAlphaTBoxOutline,
-        mdiEmail,
+        mdiEmailEditOutline,
         mdiCogOutline,
         mdiAccountCogOutline
       },

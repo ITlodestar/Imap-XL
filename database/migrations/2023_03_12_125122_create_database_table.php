@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('filename');
             $table->string('comment');
-            $table->integer('status');
+            $table->integer('status')->default(0);
             $table->bigInteger("created");
             $table->bigInteger("updated");
         });

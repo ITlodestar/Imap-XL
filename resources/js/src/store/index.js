@@ -10,11 +10,15 @@ export default new Vuex.Store({
     keywords: []
   },
   mutations: {
+    // User control
     setDatabase: (state, database) => {
       state.database = database;
     },
     setKeywords: (state, keywords) => {
       state.keywords = keywords;
+    },
+    addTask: (state, data) => {
+      state.database.push(data)
     }
   },
   actions: {
@@ -25,7 +29,7 @@ export default new Vuex.Store({
             commit('setDatabase', res.data)
           })
           .catch(error => console.log(error))
-        }
+      }
     },
     async getKeywords({ commit }) {
       if (this.state.keywords == '') {
@@ -35,8 +39,9 @@ export default new Vuex.Store({
             commit('setKeywords', res.data)
           })
           .catch(error => console.log(error))
-        }
+      }
     }
+
   },
   modules: {},
 })

@@ -16,9 +16,13 @@ use App\Http\Controllers\KeywordController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/api/getDatabase', [DatabaseController::class, 'getdatabase']);
-Route::get('/api/getKeywords', [KeywordController::class, 'getkeywords']);
 
- // Vue Route..
+  Route::get('/api/getKeywords', [KeywordController::class, 'getkeywords']);
+
+// DatabaseController
+  Route::get('/api/getDatabase', [DatabaseController::class, 'getdatabase']);
+  Route::post('/uploadfile', [DatabaseController::class, 'fileUpload']);
+
+// Vue Route..
 Route::get('/{any}', [ApplicationController::class, 'index'])->where('any', '.*');
 

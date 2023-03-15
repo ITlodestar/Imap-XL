@@ -3376,6 +3376,11 @@
   "resolved" "https://registry.npmjs.org/core-js/-/core-js-3.21.1.tgz"
   "version" "3.21.1"
 
+"core-js@2":
+  "integrity" "sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ=="
+  "resolved" "https://registry.npmjs.org/core-js/-/core-js-2.6.12.tgz"
+  "version" "2.6.12"
+
 "core-util-is@~1.0.0":
   "integrity" "sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ=="
   "resolved" "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz"
@@ -10379,6 +10384,13 @@
     "loader-utils" "^1.1.0"
     "vue-hot-reload-api" "^2.3.0"
     "vue-style-loader" "^4.1.0"
+
+"vue-loading-skeleton@^1.1.9":
+  "integrity" "sha512-5gMrI9equv0PMVLD5EMa4NTUvqDM3Bq/wiO4NftbEaVNeoGomG/XslB4Ev8Ued+WiE2Y/9HsIx5YXhDXimyqZw=="
+  "resolved" "https://registry.npmjs.org/vue-loading-skeleton/-/vue-loading-skeleton-1.1.9.tgz"
+  "version" "1.1.9"
+  dependencies:
+    "core-js" "2"
 
 "vue-router@^3.2.0":
   "integrity" "sha512-FUlILrW3DGitS2h+Xaw8aRNvGTwtuaxrRkNSHWTizOfLUie7wuYwezeZ50iflRn8YPV5kxmU2LQuu3nM/b3Zsg=="

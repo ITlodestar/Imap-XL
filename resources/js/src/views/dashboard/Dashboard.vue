@@ -3,17 +3,19 @@
     <v-col cols="12">
       <account-settings-account :account-data="accountSettingData.account"></account-settings-account>
     </v-col>
-    <v-col cols="12"> 
+    <v-col v-if="this.database" cols="12">
       <dashboard-datatable :data="this.database"></dashboard-datatable>
     </v-col>
+    <Skeleton v-else />
   </v-row>
 </template>
 
 <script>
+
 import { mapActions, mapState } from 'vuex';
 import AccountSettingsAccount from './upload.vue';
 import DashboardDatatable from './DashboardDatatable.vue';
-
+import { Skeleton } from 'vue-loading-skeleton';
 
 export default {
   components: {
@@ -21,7 +23,6 @@ export default {
     DashboardDatatable,
   },
   setup() {
-   
     const accountSettingData = {
       account: {
         avatarImg: require('@/assets/images/avatars/1.png').default,
@@ -47,8 +48,8 @@ export default {
       accountSettingData
     }
   },
-  created: function () { 
-    this.getDatabase();
+  created: function () {
+    this.getDatabase();  
   },
   methods: {
     ...mapActions({
@@ -59,6 +60,7 @@ export default {
     ...mapState([
       'database'
     ])
-  }
+  },
+  
 }
 </script>
