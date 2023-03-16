@@ -14,7 +14,7 @@
           <span>{{ item.keyword }}</span>
         </div>
       </template>
-      <template #[`item.delete`]="{ item }" >
+      <template #[`item.delete`] >
         <div class="d-flex align-center justify-center">
           <v-btn variant="flat" color="error">
             Delete

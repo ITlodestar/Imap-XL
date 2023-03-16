@@ -17,12 +17,15 @@ use App\Http\Controllers\KeywordController;
 |
 */
 
-  Route::get('/api/getKeywords', [KeywordController::class, 'getkeywords']);
+  
 
 // DatabaseController
   Route::get('/api/getDatabase', [DatabaseController::class, 'getdatabase']);
+  Route::post('/api/process', [DatabaseController::class, 'setProgress']);
   Route::post('/uploadfile', [DatabaseController::class, 'fileUpload']);
+//
+  Route::get('/api/getKeywords', [KeywordController::class, 'getkeywords']);
 
 // Vue Route..
-Route::get('/{any}', [ApplicationController::class, 'index'])->where('any', '.*');
+  Route::get('/{any}', [ApplicationController::class, 'index'])->where('any', '.*');
 

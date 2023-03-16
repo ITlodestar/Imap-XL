@@ -1,6 +1,5 @@
 <template>
   <v-card flat class="pa-3 mt-2">
-
     <v-card-text class="d-flex justify-center align-item-center">
       <v-row>
         <v-col :class="{ 'd-flex': !fileupload }">
@@ -25,7 +24,6 @@
               <v-textarea color="primary" label="Comment" v-model="Comment"></v-textarea>
             </v-container>
           </div>
-
         </v-col>
 
         <div v-if="Comment">
@@ -124,7 +122,7 @@ export default {
       file.value = '';
       fileupload.value = false;
       Comment.value = '';
-      document.getElementById('uploadtxt').value('');
+      document.getElementById('uploadtxt').value = false;
     }
 
     return {

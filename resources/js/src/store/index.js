@@ -4,24 +4,37 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
-const store =  new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     database: [],
-    keywords: []
+    keywords: [],
   },
   mutations: {
-    // User control
+    //****User control******\\
+    // database
     setDatabase: (state, database) => {
       state.database = database;
     },
+    addTaks: (state, data) => {
+      let newid = state.database[state.database.length - 1].id + 1;
+      data.id = newid;
+      state.database.push(data);
+    },
+    setProcessid: ( state, id ) => {
+      state.database.map((item) => {
+         if(item.id === id) {
+          return item.status = 1;
+         }
+      })
+    },
+    // Keywords
     setKeywords: (state, keywords) => {
       state.keywords = keywords;
     },
-    addTaks: (state, data) => {
-      state.database.push(data)
-    }
+    
   },
   actions: {
+    // Database
     async getDatabase({ commit }) {
       if (this.state.database == '') {
         return await axios.get(`/api/getDatabase`)
@@ -30,6 +43,16 @@ const store =  new Vuex.Store({
           })
           .catch(error => console.log(error))
       }
+    },
+    async setProcess({ commit }, id) {
+      const Id = {
+        id: id
+      }
+      return axios.post('/api/process', Id)
+        .then(res => {
+          commit('setProcessid', id)
+        })
+        .catch(error => console.log(error))
     },
     async getKeywords({ commit }) {
       if (this.state.keywords == '') {
@@ -41,7 +64,7 @@ const store =  new Vuex.Store({
           .catch(error => console.log(error))
       }
     },
-    
+
   },
   modules: {},
 })

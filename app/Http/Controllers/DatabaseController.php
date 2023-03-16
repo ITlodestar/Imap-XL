@@ -2,15 +2,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Workertask;
 use Illuminate\Http\Request;
 use App\Models\Database;
+
 
 class DatabaseController extends Controller
 {
     // Get Database data on User panel.
-    public function getdatabase(Request $request) {
+    public function getdatabase(Request $request)
+    {
         // session user id find('')
-        $database = User::find(1)-> databases;
+        $database = User::find(1)->databases;
         $data = [];
         foreach ($database as $value) {
             array_push($data, $value);
@@ -18,33 +21,71 @@ class DatabaseController extends Controller
         return $data;
     }
 
-    public function fileUpload(Request $request) {
-        
-        
+    public function fileUpload(Request $request)
+    {
+
         $request->validate([
             'file' => 'required|mimes:txt|max:2048'
-         ]);
-        
-         $data = new Database; 
-         $comment =   json_decode($request['comment']) ;
-      
-         if($request->file()) {
-            
-            $file_name = time().'_'.$request->file->getClientOriginalName();
+        ]);
+
+        $dataupload = new Database;
+
+        $comment = json_decode($request['comment']);
+
+        if ($request->file()) {
+
+            $file_name = time() . "_" . $request->file->getClientOriginalName();
             $file_path = $request->file('file')->storeAs('uploads', $file_name, 'public');
 
             // session value
-            $data->user_id= 1;  
-            $data->name = $request->file->getClientOriginalName();
-            $data->filename =  $request->file->getClientOriginalName();
-            $data->comment = $comment->value;
-         
-            $data->created = time();
-            $data->updated = time();
-            $data->save();
-            
-             return response()->json(['success'=>'File uploaded successfully.']);
-             
-         }
+            $dataupload->user_id = 1;
+
+            $dataupload->name = $request->file->getClientOriginalName();
+            $dataupload->filename = $request->file->getClientOriginalName();
+            $dataupload->comment = $comment->value;
+
+            $dataupload->created = time();
+            $dataupload->updated = time();
+            $dataupload->save();
+
+            return response()->json(['success' => 'File uploaded successfully.']);
+        }
+    }
+    public function setProgress(Request $request)
+    {
+
+        $id = json_decode($request['id']);
+        $user = Database::find($id);
+        // $user->status = 1;
+        // $user->save();
+
+        $content = "";
+
+        $handle = fopen(storage_path('app/public/mail.txt'),"r");
+        if ($handle) {
+            while (($line = fgets($handle)) !== false) {
+                // array_push($content,str_replace(array("\r", "\n"), '', $line));
+
+                $content = str_replace(array("\r", "\n"), '', $line);
+                // $pregLetter = preg_split("/[\s:]+/", $content);
+                 
+                $this->getCreateworktask($id, $content);
+            }
+            fclose($handle);
+        }
+        
+        return response()->json(['success' => 'Create work task.']);
+    }
+    private function getCreateworktask($databaseid, $taskbody) {
+        $newTask = new Workertask;
+
+        $newTask->database_id = $databaseid;
+        $newTask->task_type = 0;
+        $newTask->task_body = json_encode($taskbody);
+        $newTask->status = 0;
+        $newTask->timestart =  time();
+        $newTask->timefinish =  time();
+
+        $newTask->save();
     }
 }

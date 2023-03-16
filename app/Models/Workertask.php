@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Workertask extends Model
 {
-    protected $table = 'workertask';
+    protected $table = 'worker_task';
     public $timestamps = false;
 }
