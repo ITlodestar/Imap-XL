@@ -59,7 +59,7 @@ export default {
       Process,
       status: {
         0: 'new',
-        1: 'progress',
+        1: 'Cron generates tasks',
         2: 'checked',
       },
       statusColor,
