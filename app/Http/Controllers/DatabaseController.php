@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Settings;
 use App\Models\User;
 use App\Models\Workertask;
 use Illuminate\Http\Request;
@@ -59,24 +60,47 @@ class DatabaseController extends Controller
         // $user->status = 1;
         // $user->save();
 
-        $content = "";
+        $content = [];
 
         $handle = fopen(storage_path('app/public/mail.txt'),"r");
         if ($handle) {
             while (($line = fgets($handle)) !== false) {
-                // array_push($content,str_replace(array("\r", "\n"), '', $line));
+                array_push($content,str_replace(array("\r", "\n"), '', $line));
 
-                $content = str_replace(array("\r", "\n"), '', $line);
+                // $content = str_replace(array("\r", "\n"), '', $line);
+
                 // $pregLetter = preg_split("/[\s:]+/", $content);
                  
-                $this->getCreateworktask($id, $content);
             }
             fclose($handle);
         }
-        
+        $group = [];
+        $index = 0;
+        $total = 0;
+        $size = $this->get_settings('task_0_size');
+       
+        foreach ($content as  $value) {
+            array_push($group, $value);
+            $total ++;
+            $index ++;
+
+            if ($size == $index || $total == count($content)) {
+                $this->getCreateworktask($id, json_encode($group));
+                $index = 0;
+                $group = [];
+            }
+        }
+       
         return response()->json(['success' => 'Create work task.']);
     }
+
+    private function get_settings($variable_name) {
+      
+        $Setting  = Settings::where('variable', $variable_name)->first();
+        return $Setting->value;
+    }
     private function getCreateworktask($databaseid, $taskbody) {
+        
         $newTask = new Workertask;
 
         $newTask->database_id = $databaseid;
