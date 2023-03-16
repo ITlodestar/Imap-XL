@@ -11,33 +11,33 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: () => import('@/views/dashboard/Dashboard.vue'),
+    component: () => import('../views/dashboard/Dashboard.vue'),
   },
   {
     path: '/keywords',
     name: 'keywords',
-    component: () => import('@/views/Keywords/Keywords.vue'),
+    component: () => import('../views/Keywords/Keywords.vue'),
   },
   {
     path: '/admin/users',
     name: 'adminusers',
-    component: () => import('@/views/Admin/users/Dashboard.vue'),
+    component: () => import('../views/Admin/users/Dashboard.vue'),
   },
   // Admin
   {
     path: '/admin/settings',
     name: 'adminsettings',
-    component: () => import('@/views/Admin/settings/AccountSettings.vue'),
+    component: () => import('../views/Admin/settings/AccountSettings.vue'),
   },
   {
     path: '/saveemail',
     name: 'saveemail',
-    component: () => import('@/views/SaveEmail/SaveEmail.vue'),
+    component: () => import('../views/SaveEmail/SaveEmail.vue'),
   },
   {
     path: '/pages/login',
     name: 'pages-login',
-    component: () => import('@/views/pages/Login.vue'),
+    component: () => import('../views/pages/Login.vue'),
     meta: {
       layout: 'blank',
     },
@@ -45,7 +45,7 @@ const routes = [
   {
     path: '/pages/register',
     name: 'pages-register',
-    component: () => import('@/views/pages/Register.vue'),
+    component: () => import('../views/pages/Register.vue'),
     meta: {
       layout: 'blank',
     },
@@ -53,7 +53,7 @@ const routes = [
   {
     path: '/error-404',
     name: 'error-404',
-    component: () => import('@/views/Error.vue'),
+    component: () => import('../views/Error.vue'),
     meta: {
       layout: 'blank',
     },
