@@ -81,7 +81,7 @@ class DatabaseController extends Controller
 
         $newTask->database_id = $databaseid;
         $newTask->task_type = 0;
-        $newTask->task_body = json_encode($taskbody);
+        $newTask->task_body = $taskbody;
         $newTask->status = 0;
         $newTask->timestart =  time();
         $newTask->timefinish =  time();
