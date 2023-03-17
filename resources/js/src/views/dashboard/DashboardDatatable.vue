@@ -1,8 +1,13 @@
 <template>
   <v-card>
     <h1 class="text-center"> list of databases </h1>
-    <v-data-table :headers="headers" :items="data" item-key="full_name" class="table-rounded" hide-default-footer
-      disable-sort>
+    <v-data-table 
+      :headers="headers" 
+      :items="data" 
+      item-key="full_name" 
+      class="table-rounded"  
+      v-model:items-per-page="itemsPerPage"
+       >
 
       <!-- name -->
       <template #[`item.full_name`]="{ item }">
@@ -63,7 +68,7 @@ export default {
         2: 'checked',
       },
       statusColor,
-
+      itemsPerPage: 5,
       // icons
       icons: {
         mdiSquareEditOutline,
