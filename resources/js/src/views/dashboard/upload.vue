@@ -111,7 +111,6 @@ export default {
           comment: Comment.value,
           status: 0
         }
-       
         store.commit('addTaks', addtask)
         console.log(res.data);
         UploadCancel();
