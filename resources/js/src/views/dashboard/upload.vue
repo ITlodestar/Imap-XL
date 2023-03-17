@@ -15,7 +15,7 @@
                 <span class="d-none d-sm-block">Upload new txt</span>
               </v-btn>
               <p class="text-sm mt-5">
-               => Upload txt file here separator should be “:”
+                Upload txt file here separator should be “:”
               </p>
               <input type="file" accept=".txt" ref="refInputEl" id="uploadtxt" v-on:change="importData"
                 style="display: none;" />
