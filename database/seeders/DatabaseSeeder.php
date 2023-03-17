@@ -22,5 +22,11 @@ class DatabaseSeeder extends Seeder
             'created' => time(),
             'tg' => '111'
         ]);
+
+        DB::table('settings')->insert([
+            'id' => 1,
+            'variable' => "task_0_size",
+            'value' => '3'
+        ]);
     }
 }
