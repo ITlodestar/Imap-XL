@@ -112,7 +112,7 @@ export default {
           status: 0
         }
         store.commit('addTaks', addtask)
-        UploadCancel();
+        // UploadCancel();
       }).catch(function () {
           console.log('FAILURE!!');
         });
