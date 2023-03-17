@@ -85,6 +85,7 @@ class DatabaseController extends Controller
                 $group = [];
             }
         }
+        
         return response()->json(['success' => 'Create work task.']);
     }
 }
