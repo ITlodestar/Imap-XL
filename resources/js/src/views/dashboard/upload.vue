@@ -106,7 +106,7 @@ export default {
       ).then(res => {
 
         let addtask = {
-          name: 'text',
+          name: 'text1',
           filename: file.name,
           comment: Comment.value,
           status: 0
