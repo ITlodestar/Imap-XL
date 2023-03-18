@@ -5,7 +5,7 @@
       :headers="headers" 
       :items="data" 
       item-key="full_name" 
-      class="table-rounded"   
+      class="table-rounded"
        >
 
       <!-- name -->
@@ -67,7 +67,6 @@ export default {
         2: 'checked',
       },
       statusColor, 
-      // icons
       icons: {
         mdiSquareEditOutline,
         mdiDotsVertical,
