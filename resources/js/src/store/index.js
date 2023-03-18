@@ -22,7 +22,7 @@ const store = new Vuex.Store({
     },
     setProcessid: ( state, id ) => {
       state.database.map((item) => {
-         if(item.id === id) {
+         if(item.id == id) {
           return item.status = 1;
          }
       })
@@ -48,10 +48,11 @@ const store = new Vuex.Store({
       const Id = {
         id: id
       }
+      commit('setProcessid', id)
       return axios.post('/api/process', Id)
         .then(res => {
           console.log(res.data);
-          commit('setProcessid', id)
+          
         })
         .catch(error => console.log(error))
     },

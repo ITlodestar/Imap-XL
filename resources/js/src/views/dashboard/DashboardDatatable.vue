@@ -1,8 +1,12 @@
 <template>
   <v-card>
     <h1 class="text-center"> list of databases </h1>
-    <v-data-table :headers="headers" :items="data" item-key="full_name" class="table-rounded" hide-default-footer
-      disable-sort>
+    <v-data-table 
+      :headers="headers" 
+      :items="data" 
+      item-key="full_name" 
+      class="table-rounded"   
+       >
 
       <!-- name -->
       <template #[`item.full_name`]="{ item }">
@@ -62,8 +66,7 @@ export default {
         1: 'Cron generates tasks',
         2: 'checked',
       },
-      statusColor,
-
+      statusColor, 
       // icons
       icons: {
         mdiSquareEditOutline,
