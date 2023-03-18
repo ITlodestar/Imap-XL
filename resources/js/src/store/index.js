@@ -48,13 +48,8 @@ const store = new Vuex.Store({
       const Id = {
         id: id
       }
-<<<<<<< HEAD
-      commit('setProcessid', id)
-      return axios.post('/api/process', Id)
-=======
       commit('setProcessid', id);
       return await axios.post(`/api/process`, Id)
->>>>>>> e15e6a912a642cb3adc146d8a0b5088c29ded80b
         .then(res => {
           console.log(res.data);
           
