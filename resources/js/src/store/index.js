@@ -39,6 +39,7 @@ const store = new Vuex.Store({
       if (this.state.database == '') {
         return await axios.get(`/api/getDatabase`)
           .then(res => {
+            console.log("successfull to get Data");
             commit('setDatabase', res.data)
           })
           .catch(error => console.log(error))

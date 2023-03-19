@@ -1,6 +1,6 @@
 {
-  "name": "Imap",
-  "description": "...",
+  "name": "materio-vuetify-vuejs-laravel-admin-template-free",
+  "description": "Production Ready, Carefully Crafted, Extensive Vuetifty Admin Template",
   "version": "1.0.2",
   "private": true,
   "scripts": {
@@ -13,7 +13,7 @@
     "production": "mix --production"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-babel": "^5.0.8",
     "axios": "^0.21",
     "babel-eslint": "^10.1.0",
     "deepmerge": "^4.2.2",
@@ -38,11 +38,11 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-apexcharts": "^1.6.2",
-    "vue-loading-skeleton": "^1.1.9",
     "vue-router": "^3.2.0",
     "vuetify": "^2.4.0",
     "vuetifyjs-mix-extension": "0.0.20",
-    "vuex": "^3.6.2",
+    "vuex": "^3.4.0",
     "webpack": "^5.58.2"
-  }
+  },
+  "packageManager": "yarn@3.2.3"
 }
