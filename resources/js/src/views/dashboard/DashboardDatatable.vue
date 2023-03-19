@@ -6,6 +6,7 @@
       :items="data" 
       item-key="full_name" 
       class="table-rounded"
+      disable-sort
        >
 
       <!-- name -->
