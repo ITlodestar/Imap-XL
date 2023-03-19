@@ -1,21 +1,22 @@
 <template>
   <v-card>
     <h1 class="text-center"> list of databases </h1>
-    <!-- <v-data-table 
+    <v-data-table 
       :headers="headers" 
       :items="data" 
       item-key="full_name" 
       class="table-rounded"
       disable-sort
        >
- 
+
+      <!-- name -->
       <template #[`item.full_name`]="{ item }">
         <div class="d-flex flex-column">
           <span class="d-block font-weight-semibold text--primary text-truncate">{{ item.full_name }}</span>
         </div>
       </template>
 
-    
+      <!-- status -->
       <template #[`item.status`]="{ item }">
         <div class="d-flex align-center justify-center  ">
           <v-chip small :color="statusColor[status[item.status]]" class="font-weight-medium" outlined>
@@ -33,7 +34,7 @@
             </v-btn>
           </div>
       </template>
-    </v-data-table> -->
+    </v-data-table>
   </v-card>
 </template>
 
