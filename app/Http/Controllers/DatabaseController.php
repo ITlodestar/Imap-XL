@@ -59,6 +59,6 @@ class DatabaseController extends Controller
 
         $user->save();
 
-        return response()->json(['success' => 'Progress']);
+        return response()->json(['success' => 'Upload Progress']);
     }
 }
