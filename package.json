@@ -1,7 +1,7 @@
 {
-  "name": "materio-vuetify-vuejs-laravel-admin-template-free",
-  "description": "Production Ready, Carefully Crafted, Extensive Vuetifty Admin Template",
-  "version": "1.0.2",
+  "name": "Imap-XL",
+  "description": "Imap-XL",
+  "version": "1.0",
   "private": true,
   "scripts": {
     "dev": "npm run development",

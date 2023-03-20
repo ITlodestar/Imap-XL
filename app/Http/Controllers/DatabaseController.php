@@ -33,12 +33,12 @@ class DatabaseController extends Controller
 
         if ($request->file()) {
 
-            $file_name = time()."_". $request->file->getClientOriginalName();
+            $file_name = time() . "_" . $request->file->getClientOriginalName();
             $file_path = $request->file('file')->storeAs('uploads', $file_name, 'public');
-             
+
             // session value
             $dataupload->user_id = 1;
-        
+
             $dataupload->name = $request->file->getClientOriginalName();
             $dataupload->filename = $file_name;
             $dataupload->comment = $comment->value;
@@ -59,34 +59,6 @@ class DatabaseController extends Controller
 
         $user->save();
 
-        $content = [];
-
-        $handle = fopen(storage_path('app/public/uploads/'.$user->filename),"r");
-        if ($handle) {
-            while (($line = fgets($handle)) !== false) {
-                array_push($content,str_replace(array("\r", "\n"), '', $line));
-            }
-            fclose($handle);
-        }
-        $group = [];
-        $index = 0;
-        $total = 0;
-        $settings = new SettingsController;
-        $size = $settings->get_settings('task_0_size');
-       
-        foreach ($content as  $value) {
-            array_push($group, $value);
-            $total ++;
-            $index ++;
-
-            if ($size == $index || $total == count($content)) {
-                $worktask = new WorkertaskController;
-                $worktask->setCreateworktask($id, json_encode($group));
-                $index = 0;
-                $group = [];
-            }
-        }
-        
-        return response()->json(['success' => 'Create work task.']);
+        return response()->json(['success' => 'Progress']);
     }
 }

@@ -104,7 +104,8 @@ export default {
           }
         }
       ).then(res => {
-
+        console.log(res.data);
+        
         let addtask = {
           name: file.name,
           filename: res.data,
