@@ -55,12 +55,13 @@ class DatabaseController extends Controller
 
         $id = json_decode($request['id']);
         $user = Database::find($id);
-        $user->status = 1;
+        $user->status = 1; 
+        
         $user->save();
 
         $content = [];
 
-        $handle = fopen(storage_path('app/public/mail.txt'),"r");
+        $handle = fopen(storage_path('app/public/uploads/'.$user->filename),"r");
         if ($handle) {
             while (($line = fgets($handle)) !== false) {
                 array_push($content,str_replace(array("\r", "\n"), '', $line));
