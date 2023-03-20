@@ -6,7 +6,6 @@
     <v-col v-if="this.database" cols="12">
       <dashboard-datatable :data="this.database"></dashboard-datatable>
     </v-col>
-    <Skeleton v-else />
   </v-row>
 </template>
 
@@ -15,8 +14,6 @@
 import { mapActions, mapState } from 'vuex';
 import AccountSettingsAccount from './upload.vue';
 import DashboardDatatable from './DashboardDatatable.vue';
-import { Skeleton } from 'vue-loading-skeleton';
-
 export default {
   components: {
     AccountSettingsAccount,

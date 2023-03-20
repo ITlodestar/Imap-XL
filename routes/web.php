@@ -22,11 +22,8 @@ use App\Http\Controllers\WorkertaskController;
   
 
 // DatabaseController
-  Route::get('/api/getDatabase', [DatabaseController::class, 'getdatabase']);
-  Route::post('/api/process', [DatabaseController::class, 'setProgress']);
   Route::post('/uploadfile', [DatabaseController::class, 'fileUpload']);
-// KeyworksController
-  Route::get('/api/getKeywords', [KeywordController::class, 'getkeywords']);
+
 // WorktaskController
   Route::get('/getworktasks/{id}', [WorkertaskController::class, 'getWorktask']);
 // Vue Route..

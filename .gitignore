@@ -21,7 +21,7 @@ demo.zip
 .DS_Store
 node_modules
 /dist
-
+.yarn
 
 # local env files
 .env.local
