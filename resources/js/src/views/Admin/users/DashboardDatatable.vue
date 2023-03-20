@@ -1,7 +1,12 @@
 <template>
   <v-card>
     <h1 class="text-center"> list Users </h1>
-    <v-data-table :headers="headers" :items="userList" item-key="full_name" class="table-rounded" hide-default-footer
+    <v-data-table 
+      :headers="headers" 
+      :items="userList" 
+      item-key="full_name" 
+      class="table-rounded" 
+      
       disable-sort> 
     </v-data-table>
   </v-card>

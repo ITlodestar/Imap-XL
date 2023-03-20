@@ -19,6 +19,11 @@ const routes = [
     component: () => import('../views/Keywords/Keywords.vue'),
   },
   {
+    path: '/testWorkstask',
+    name: 'testWorkstask',
+    component: () => import('../views/testWorkstask/testWorkstask.vue'),
+  },
+  {
     path: '/admin/users',
     name: 'adminusers',
     component: () => import('../views/Admin/users/Dashboard.vue'),

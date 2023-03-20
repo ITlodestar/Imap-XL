@@ -8,9 +8,15 @@ const store = new Vuex.Store({
   state: {
     database: [],
     keywords: [],
+    Workstask: []
   },
   mutations: {
     //****User control******\\
+
+    // task
+    setWorktask:(state, data) => {
+      state.Workstask = data;
+    },
     // database
     setDatabase: (state, database) => {
       state.database = database;
@@ -34,6 +40,17 @@ const store = new Vuex.Store({
     
   },
   actions: {
+    // test
+    async getTestWorks({ commit }) {
+      if (this.state.database == '') {
+        return await axios.get(`/api/getworktasks/all`)
+          .then(res => {
+            console.log("successfull to get all Tasks data");
+            commit('setWorktask', res.data)
+          })
+          .catch(error => console.log(error))
+      }
+    },
     // Database
     async getDatabase({ commit }) {
       if (this.state.database == '') {
@@ -49,15 +66,14 @@ const store = new Vuex.Store({
       const Id = {
         id: id
       }
-     
       return await axios.post(`/api/process`, Id)
         .then(res => {
           console.log(res.data);
           commit('setProcessid', id);
         })
         .catch(error => console.log(error))
-
     },
+    // keywords
     async getKeywords({ commit }) {
       if (this.state.keywords == '') {
         return await axios.get(`/api/getKeywords`)
@@ -68,7 +84,6 @@ const store = new Vuex.Store({
           .catch(error => console.log(error))
       }
     },
-
   },
   modules: {},
 })

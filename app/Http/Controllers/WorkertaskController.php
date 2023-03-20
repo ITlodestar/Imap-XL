@@ -23,10 +23,16 @@ class WorkertaskController extends Controller
     }
 
     public function getWorktask(Request $request, string $id) {
-
+        
         $databaseid = $id; 
-
-        $worktasks = Database::find($databaseid)->workertask;
+        $worktasks = [];
+        if($databaseid == 'all') {
+            $worktasks = Workertask::all();
+        }
+        else {
+            $worktasks = Database::find($databaseid)->workertask;
+        }
+        
         $tasks = [];
         foreach ($worktasks as $item) {
             array_push($tasks, $item);

@@ -1,25 +1,28 @@
 <template>
   <v-row>
+    
     <v-col cols="12">
       <account-settings-account :account-data="accountSettingData.account"></account-settings-account>
     </v-col>
-    <v-col v-if="this.database" cols="12">
-      <dashboard-datatable :data="this.database"></dashboard-datatable>
+    <v-col v-if="$store.state.database" cols="12">
+      <dashboard-datatable :data="$store.state.database"></dashboard-datatable>
     </v-col>
   </v-row>
 </template>
 
 <script>
 
-import { mapActions, mapState } from 'vuex';
 import AccountSettingsAccount from './upload.vue';
 import DashboardDatatable from './DashboardDatatable.vue';
+import store from '../../store';
+
 export default {
   components: {
     AccountSettingsAccount,
     DashboardDatatable,
   },
-  setup() {
+  store,
+  setup() { 
     const accountSettingData = {
       account: {
         avatarImg: require('@/assets/images/avatars/1.png').default,
@@ -30,34 +33,13 @@ export default {
         status: 'Active',
         company: 'Google.inc',
       },
-      information: {
-        bio: 'The name’s John Deo. I am a tireless seeker of knowledge, occasional purveyor of wisdom and also, coincidentally, a graphic designer. Algolia helps businesses across industries quickly create relevant 😎, scaLabel 😀, and lightning 😍 fast search and discovery experiences.',
-        birthday: 'February 22, 1995',
-        phone: '954-006-0844',
-        website: 'https://themeselection.com/',
-        country: 'USA',
-        languages: ['English', 'Spanish'],
-        gender: 'male',
-      },
     }
-
-    return {
+    return { 
       accountSettingData
     }
   },
   created: function () {
-    this.getDatabase();  
-  },
-  methods: {
-    ...mapActions({
-      getDatabase: 'getDatabase'
-    }),
-  },
-  computed: {
-    ...mapState([
-      'database'
-    ])
-  },
-  
+    store.dispatch('getDatabase'); 
+  }
 }
 </script>

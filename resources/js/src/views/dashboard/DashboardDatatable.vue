@@ -40,7 +40,7 @@
 
 <script>
 import { mdiSquareEditOutline, mdiDotsVertical, mdiSendCircle } from '@mdi/js'
-import store from '../../store'
+import store from '../../store';
 
 export default {
   props: ['data'],

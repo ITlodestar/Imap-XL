@@ -32,6 +32,7 @@
       <nav-menu-link title="Databases" :to="{ name: 'dashboard' }" :icon="icons.mdiHomeOutline"></nav-menu-link> 
       <nav-menu-link title="Keywords" :to="{ name: 'keywords' }" :icon="icons.mdiAlphaTBoxOutline"></nav-menu-link>
       <nav-menu-link title="Saved Emails" :to="{ name: 'saveemail' }" :icon="icons.mdiEmailEditOutline"></nav-menu-link>
+      <nav-menu-link title="Test for Work tasks" :to="{ name: 'testWorkstask' }" ></nav-menu-link>
     </v-list>
     <v-list expand shaped class="vertical-nav-menu-items pr-5">
       <nav-menu-section-title title="Admin Panel"></nav-menu-section-title>

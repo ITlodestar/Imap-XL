@@ -106,13 +106,13 @@ export default {
       ).then(res => {
 
         let addtask = {
-          name: 'text1',
-          filename: file.name,
+          name: file.name,
+          filename: res.data,
           comment: Comment.value,
           status: 0
         }
         store.commit('addTaks', addtask)
-        console.log(res.data);
+        console.log("Successfull file upload");
         UploadCancel();
       }).catch(function () {
           // console.log('FAILURE!!');

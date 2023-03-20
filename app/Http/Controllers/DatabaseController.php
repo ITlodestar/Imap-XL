@@ -33,21 +33,21 @@ class DatabaseController extends Controller
 
         if ($request->file()) {
 
-            $file_name = time() . "_" . $request->file->getClientOriginalName();
+            $file_name = time()."_". $request->file->getClientOriginalName();
             $file_path = $request->file('file')->storeAs('uploads', $file_name, 'public');
-
+             
             // session value
             $dataupload->user_id = 1;
-
+        
             $dataupload->name = $request->file->getClientOriginalName();
-            $dataupload->filename = $request->file->getClientOriginalName();
+            $dataupload->filename = $file_name;
             $dataupload->comment = $comment->value;
 
             $dataupload->created = time();
             $dataupload->updated = time();
             $dataupload->save();
 
-            return response()->json(['success' => 'File uploaded successfully.']);
+            return $file_name;
         }
     }
     public function setProgress(Request $request)
@@ -56,7 +56,7 @@ class DatabaseController extends Controller
         $id = json_decode($request['id']);
         $user = Database::find($id);
         $user->status = 1; 
-        
+
         $user->save();
 
         $content = [];
