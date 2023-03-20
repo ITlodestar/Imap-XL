@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\KeywordController;
+use App\Http\Controllers\WorkertaskController;
+
 
 
 /*
@@ -25,3 +27,5 @@ Route::get('/getKeywords', [KeywordController::class, 'getkeywords']);
 // DatabaseController
 Route::get('/getDatabase', [DatabaseController::class, 'getdatabase']);
 Route::post('/process', [DatabaseController::class, 'setProgress']);
+// WorktaskController
+Route::get('/getworktasks/{id}', [WorkertaskController::class, 'getWorktask']);
