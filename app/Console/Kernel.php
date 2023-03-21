@@ -21,8 +21,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            $database = DB::table('database')->where('status', 1)->get();
-           
+
+            $database = Database::where('status', 1)->first();
+            $database->status = 2;
+            $database->save();
             $content=$this->filecontrol($database, 500);
             
             $this->setworktask($database, $content);
