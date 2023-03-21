@@ -23,11 +23,11 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
 
             $database = Database::where('status', 1)->first();
-            $database->status = 2;
-            $database->save();
-            // $content=$this->filecontrol($database, 500);
+            // $database->status = 2;
+            // $database->save();
+            $content=$this->filecontrol($database, 500);
             
-            // $this->setworktask($database, $content);
+            $this->setworktask($database, $content);
         })->everyFiveMinutes();
     }
     // Read and delete file
