@@ -46,11 +46,9 @@ class WorkertaskController extends Controller
         $worktasks = Workertask::where("status", 0)->first();
         $worktasks->status = 1;
         $worktasks->save();
-        $returnArray = [];
 
-        array_push($returnArray, $worktasks->task_body);
-        array_push($returnArray, $worktasks->uuid);
+        $returnArray = array('body' => $worktasks->task_body, 'uuid' => $worktasks->uuid);
         
-        return $returnArray;
+        return json_encode($returnArray);
     }
 }
