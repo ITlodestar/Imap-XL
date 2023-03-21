@@ -44,7 +44,8 @@ class WorkertaskController extends Controller
     public function getWorktask(Request $request) {
        
         $worktasks = Workertask::where("status", 0)->first();
-
+        $worktasks->status = 1;
+        $worktasks->save();
         return $worktasks->task_body;
     }
 }
