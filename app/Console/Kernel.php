@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
             $content=$this->filecontrol($database, 500);
             
             $this->setworktask($database, $content);
-        })->everyFiveMinutes();
+        })->everyMinute();
     }
     // Read and delete file
     private function filecontrol($database, $line)
