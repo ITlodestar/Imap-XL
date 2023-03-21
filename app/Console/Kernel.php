@@ -21,12 +21,12 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            $database = DB::table('database')->where('status', 1)->first();
+            $database = DB::table('database')->where('status', 1)->get();
            
             $content=$this->filecontrol($database, 500);
             
             $this->setworktask($database, $content);
-        })->everyFifteenMinutes();
+        })->everyFiveMinutes();
     }
     // Read and delete file
     private function filecontrol($database, $line)
@@ -53,7 +53,7 @@ class Kernel extends ConsoleKernel
             }
         }
 
-        ftruncate($handle, 0); 
+        ftruncate($handle, 0);
         
         // Write the updated array back to the file
         fwrite($handle, implode($lines));
