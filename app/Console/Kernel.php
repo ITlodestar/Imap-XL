@@ -23,6 +23,9 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
 
             $database = Database::where('status', 1)->first();
+            if ($database->filename == '') {
+                return 0;
+            }
             // $database->status = 2;
             // $database->save();
             $content=$this->filecontrol($database, 500);

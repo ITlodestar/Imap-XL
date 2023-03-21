@@ -22,7 +22,7 @@ class WorkertaskController extends Controller
         $newTask->save();
     }
 
-    public function getWorktask(Request $request, string $id) {
+    public function getallWorktasks(Request $request, string $id) {
         
         $databaseid = $id; 
         $worktasks = [];
@@ -38,5 +38,12 @@ class WorkertaskController extends Controller
             array_push($tasks, $item);
         }
         return $tasks;
+    }
+
+    public function getWorktask(Request $request) {
+       
+        $worktasks = Workertask::where("status", 0)->first();
+
+        return $worktasks->task_body;
     }
 }
