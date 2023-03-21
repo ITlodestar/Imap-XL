@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('task_body');
             $table->integer('status');
             $table->bigInteger('timestart');
+            $table->string('uuid');
             $table->bigInteger('timefinish')->default(0);
         });
     }

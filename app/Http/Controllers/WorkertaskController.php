@@ -5,18 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Database;
 use Illuminate\Http\Request;
 use App\Models\Workertask;
-
+use Ramsey\Uuid\Uuid;
 
 class WorkertaskController extends Controller
 {
     public function setCreateworktask($databaseid, $taskbody) {
     
         $newTask = new Workertask;
-    
+        $uuid = Uuid::uuid4()->toString();
         $newTask->database_id = $databaseid;
         $newTask->task_type = 0;
         $newTask->task_body = $taskbody;
         $newTask->status = 0;
+        $newTask->uuid = $uuid;
         $newTask->timestart =  time();
     
         $newTask->save();

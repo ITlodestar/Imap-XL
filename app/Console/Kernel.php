@@ -3,12 +3,11 @@
 namespace App\Console;
 
 use App\Http\Controllers\WorkertaskController;
-use Illuminate\Support\Facades\DB;
-
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Models\Database;
 use App\Http\Controllers\SettingsController;
+
 
 class Kernel extends ConsoleKernel
 {
@@ -26,8 +25,7 @@ class Kernel extends ConsoleKernel
             if ($database->filename == '') {
                 return 0;
             }
-            // $database->status = 2;
-            // $database->save();
+            
             $content=$this->filecontrol($database, 500);
             
             $this->setworktask($database, $content);
@@ -42,7 +40,7 @@ class Kernel extends ConsoleKernel
 
         if ($handle) {
             $counter = 0;
-            while (($line = fgets($handle)) !== false) {
+            while (( $line = fgets( $handle ) ) !== false) {
                 $putline = trim($line);
                 array_push($content, str_replace(array("\r", "\n"), '', $putline));
                
@@ -54,6 +52,7 @@ class Kernel extends ConsoleKernel
             }
             if(fgets($handle) == false) {
                 $database->status = 2;
+                
                 $database->save();
             }
         }
