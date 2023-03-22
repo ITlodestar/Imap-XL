@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Userkeywords;
 use Illuminate\Http\Request;
 
 
@@ -21,12 +22,16 @@ class KeywordController extends Controller
     }
     public function addkeywords(Request $request)
     {
-        // session user id find('')
-        $keywords = User::find(1)-> keywords;
-        $data = [];
-        foreach ($keywords as $value) {
-            array_push($data, $value);
-        }
-        return $data;
+        $newkey = new Userkeywords;
+        $newkey->user_id = 1; // user id from sesson
+        $newkey->keyword =  $request['newkey'];
+        $newkey->save();
+        return json_encode(['success', "Add new keyword"]);
+    }
+    public function deleteKeywords(Request $request)
+    {
+        $newkey = Userkeywords::find($request['id']);
+        $newkey->delete();
+        return json_encode(['success', "Add new keyword"]);
     }
 }

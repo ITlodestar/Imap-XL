@@ -24,7 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 // KeyworksController
 Route::get('/getKeywords', [KeywordController::class, 'getkeywords']);
-Route::get('/setKeywords', [KeywordController::class, 'addkeywords']);
+Route::post('/addKeywords', [KeywordController::class, 'addkeywords']);
+Route::post('/deleteKeywords', [KeywordController::class, 'deleteKeywords']);
 // DatabaseController
 Route::get('/getDatabase', [DatabaseController::class, 'getdatabase']);
 Route::post('/process', [DatabaseController::class, 'setProgress']);

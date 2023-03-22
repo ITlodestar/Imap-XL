@@ -28,9 +28,8 @@ export default {
   setup() {
     let keyInput = ref(null);
     const KeyWordSave = () => {
-
-      console.log(keyInput);
-      store.dispatch('addKeywords', keyInput);
+      console.log(keyInput.value);
+      store.dispatch('addKeywords', { newkey: keyInput.value });
     }
     return {
       keyInput,

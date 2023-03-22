@@ -4,8 +4,8 @@
       <keyword-input></keyword-input>
     </v-col>
     <v-col cols="12">
-      <keywords-table :keywords="$store.state.keywords"></keywords-table>
-    </v-col>
+      <keywords-table :keywords="$store.state.keywords" @deleteKeyword="deleteKeyword"></keywords-table>
+    </v-col> 
   </v-row>
 </template>
 
@@ -22,7 +22,12 @@ export default {
   },
   store,
   setup() {
-    return { }
+    const deleteKeyword = (id) => {
+      store.dispatch('deletekeyword', id);
+    }
+    return {
+      deleteKeyword
+    }
   },
   created: function () {
     store.dispatch('getKeywords');

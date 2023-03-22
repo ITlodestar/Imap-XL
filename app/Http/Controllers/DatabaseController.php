@@ -55,8 +55,7 @@ class DatabaseController extends Controller
 
         $id = json_decode($request['id']);
         $user = Database::find($id);
-        $user->status = 1; 
-
+        $user->status = 1;
         $user->save();
 
         return response()->json(['success' => 'Upload Progress']);

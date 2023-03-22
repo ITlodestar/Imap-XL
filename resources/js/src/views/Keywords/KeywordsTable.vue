@@ -12,9 +12,9 @@
           <span>{{ item.keyword }}</span>
         </div>
       </template>
-      <template #[`item.delete`] >
+      <template #[`item.delete`] = "{ item }" >
         <div class="d-flex align-center justify-center">
-          <v-btn variant="flat" color="error">
+          <v-btn variant="flat" color="error" @click="$emit('deleteKeyword', { id : item.id})">
             Delete
           </v-btn>
         </div>
@@ -25,14 +25,14 @@
 
 <script>
  
-
-
 export default {
-  props: [
-    'keywords'
-  ],
-  setup() {
-    return {
+ 
+  props: {
+    keywords: Array,
+    deleteKeyword: Function
+  },
+  setup() { 
+    return { 
       headers: [
         { text: 'keyword', value: 'keyword', align: 'center'},
         { text: ' ', value: 'delete' }

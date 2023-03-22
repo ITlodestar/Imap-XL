@@ -17,6 +17,7 @@ const store = new Vuex.Store({
     setWorktask: (state, data) => {
       state.Workstask = data;
     },
+
     //====== database
     setDatabase: (state, database) => {
       state.database = database;
@@ -33,17 +34,24 @@ const store = new Vuex.Store({
         }
       })
     },
+
     // ====== Keywords
     setKeywords: (state, keywords) => {
       state.keywords = keywords;
     },
-    addKeywords: (state, keywords) => {
-      state.keywords.push(keywords);
+    addKeywords: (state, keyword) => {
+      let newid = state.keywords[state.keywords.length - 1].id + 1;
+      let newkeyword = { id: newid, keyword: keyword, user_id: 1 };
+     
+      state.keywords.push(newkeyword);
+      console.log(state.keywords);
+    },
+    deleteKeywords: (state, data) => {
+      let index = state.keywords.findIndex(keyword => keyword.id == data.id);
+      state.keywords.splice(index, 1);
     },
   },
   actions: {
-
-
     // test
     async getTestWorks({ commit }) {
       if (this.state.database == '') {
@@ -86,17 +94,25 @@ const store = new Vuex.Store({
       if (this.state.keywords == '') {
         return await axios.get(`/api/getKeywords`)
           .then(res => {
-            console.log(res.data);
+            console.log('getKeyword', res.data);
             commit('setKeywords', res.data)
           })
           .catch(error => console.log(error))
       }
     },
-    async addKeywords({ commit, newkey }) {
-      return await axios.post(`/api/setKeywords`)
+    async addKeywords({ commit }, keyword) {
+
+      return await axios.post(`/api/addKeywords`, keyword)
         .then(res => {
           console.log(res.data);
-          commit('setKeywords', res.data);
+          commit('addKeywords', keyword.newkey);
+        })
+        .catch(error => console.log(error))
+    },
+    async deletekeyword({ commit }, keyid) {
+      return await axios.post(`/api/deleteKeywords`, keyid)
+        .then(res => {
+          commit('deleteKeywords', keyid);
         })
         .catch(error => console.log(error))
     }
