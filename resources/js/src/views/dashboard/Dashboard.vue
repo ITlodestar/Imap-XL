@@ -2,7 +2,7 @@
   <v-row>
     
     <v-col cols="12">
-      <account-settings-account :account-data="accountSettingData.account"></account-settings-account>
+      <upload-input></upload-input>
     </v-col>
     <v-col v-if="$store.state.database" cols="12">
       <dashboard-datatable :data="$store.state.database"></dashboard-datatable>
@@ -12,13 +12,13 @@
 
 <script>
 
-import AccountSettingsAccount from './upload.vue';
+import UploadInput from './upload.vue';
 import DashboardDatatable from './DashboardDatatable.vue';
 import store from '../../store';
 
 export default {
   components: {
-    AccountSettingsAccount,
+    UploadInput,
     DashboardDatatable,
   },
   store,

@@ -55,14 +55,8 @@ import store from '../../store'
 import axios from 'axios'
 
 export default {
-  props: {
-    accountData: {
-      type: Object,
-      default: () => { },
-    },
-  },
   store,
-  setup(props, context) {
+  setup() {
 
     let file = ref(null);
     let Comment = ref(null);
@@ -124,7 +118,7 @@ export default {
       file.value = '';
       fileupload.value = false;
       Comment.value = '';
-      document.getElementById('uploadtxt').value = false;
+      file.value = '';
     }
 
     return {

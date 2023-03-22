@@ -13,11 +13,11 @@ const store = new Vuex.Store({
   mutations: {
     //****User control******\\
 
-    // task
-    setWorktask:(state, data) => {
+    //====== task
+    setWorktask: (state, data) => {
       state.Workstask = data;
     },
-    // database
+    //====== database
     setDatabase: (state, database) => {
       state.database = database;
     },
@@ -26,37 +26,43 @@ const store = new Vuex.Store({
       data.id = newid;
       state.database.push(data);
     },
-    setProcessid: ( state, id ) => {
+    setProcessid: (state, id) => {
       state.database.map((item) => {
-         if(item.id == id) {
+        if (item.id == id) {
           return item.status = 1;
-	      }
+        }
       })
     },
-    // Keywords
+    // ====== Keywords
     setKeywords: (state, keywords) => {
       state.keywords = keywords;
     },
-    
+    addKeywords: (state, keywords) => {
+      state.keywords.push(keywords);
+    },
   },
   actions: {
+
+
     // test
     async getTestWorks({ commit }) {
       if (this.state.database == '') {
         return await axios.get(`/api/getworktasks/all`)
           .then(res => {
-            console.log("successfull to get all Tasks data");
+            console.log("successfull: to get all Tasks data");
             commit('setWorktask', res.data)
           })
           .catch(error => console.log(error))
       }
     },
+
+
     // Database
     async getDatabase({ commit }) {
       if (this.state.database == '') {
         return await axios.get(`/api/getDatabase`)
           .then(res => {
-            console.log("successfull to get Data");
+            console.log("successfull: to get Data");
             commit('setDatabase', res.data)
           })
           .catch(error => console.log(error))
@@ -73,6 +79,8 @@ const store = new Vuex.Store({
         })
         .catch(error => console.log(error))
     },
+
+
     // keywords
     async getKeywords({ commit }) {
       if (this.state.keywords == '') {
@@ -84,6 +92,14 @@ const store = new Vuex.Store({
           .catch(error => console.log(error))
       }
     },
+    async addKeywords({ commit, newkey }) {
+      return await axios.post(`/api/setKeywords`)
+        .then(res => {
+          console.log(res.data);
+          commit('setKeywords', res.data);
+        })
+        .catch(error => console.log(error))
+    }
   },
   modules: {},
 })

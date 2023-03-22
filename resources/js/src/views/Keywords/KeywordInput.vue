@@ -1,16 +1,46 @@
 <template>
-  <v-container>
-    <v-textarea  
-      color="primary"
-      label="textarea to add list of keywords one keyword each line"></v-textarea>
+  <v-container class="d-flex">
+
+    <v-textarea 
+      color="primary" 
+      label="textarea to add list of keywords one keyword each line"
+      v-model="keyInput"
+      value
+      >
+    </v-textarea>
+
+    <v-btn color="success" class="me-3 mt-5 " @click="KeyWordSave()">
+      <v-icon>
+        {{ icons.mdiCloudUploadOutline }}
+      </v-icon>
+      <span class="d-none d-sm-block">Save</span>
+    </v-btn>
   </v-container>
 </template>
 
 <script>
 
-export default {
-  components: {
+import { mdiAlertOutline, mdiCloudUploadOutline, mdiCancel } from '@mdi/js'
+import { ref } from '@vue/composition-api'
+import store from '../../store';
 
-  },
+export default {
+  setup() {
+    let keyInput = ref(null);
+    const KeyWordSave = () => {
+
+      console.log(keyInput);
+      store.dispatch('addKeywords', keyInput);
+    }
+    return {
+      keyInput,
+      KeyWordSave,
+      icons: {
+        mdiCancel,
+        mdiAlertOutline,
+        mdiCloudUploadOutline,
+      },
+    }
+  }
 }
 </script>

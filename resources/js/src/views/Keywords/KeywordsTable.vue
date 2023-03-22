@@ -4,9 +4,7 @@
       :headers="headers" 
       :items="keywords" 
       item-key="id" 
-      class=" " 
-      style="text-align: center !important;"
-      hide-default-footer
+      class=" "
       disable-sort>
       <!-- name -->
       <template #[`item.keyword`]="{ item }">
@@ -27,6 +25,7 @@
 
 <script>
  
+
 
 export default {
   props: [

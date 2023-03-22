@@ -24,10 +24,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 // KeyworksController
 Route::get('/getKeywords', [KeywordController::class, 'getkeywords']);
+Route::get('/setKeywords', [KeywordController::class, 'addkeywords']);
 // DatabaseController
 Route::get('/getDatabase', [DatabaseController::class, 'getdatabase']);
 Route::post('/process', [DatabaseController::class, 'setProgress']);
-// WorktaskController
 
+// WorktaskController
 Route::get('/getworktasks/{id}', [WorkertaskController::class, 'getallWorktasks']);
 Route::get('/getworktask', [WorkertaskController::class, 'getWorktask']);
