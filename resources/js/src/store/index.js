@@ -40,10 +40,14 @@ const store = new Vuex.Store({
       state.keywords = keywords;
     },
     addKeywords: (state, keyword) => {
-      let newid = state.keywords[state.keywords.length - 1].id + 1;
-      let newkeyword = { id: newid, keyword: keyword, user_id: 1 };
+      let startid = state.keywords[state.keywords.length - 1].id + 1;
+
+      keyword.forEach(element => {
+        let newkeyword = { id: startid, keyword: element, user_id: 1 };
+        state.keywords.push(newkeyword);
+        startid ++;
+      });
      
-      state.keywords.push(newkeyword);
       console.log(state.keywords);
     },
     deleteKeywords: (state, data) => {
@@ -100,16 +104,16 @@ const store = new Vuex.Store({
           .catch(error => console.log(error))
       }
     },
-    async addKeywords({ commit }, keyword) {
-
-      return await axios.post(`/api/addKeywords`, keyword)
+    async addKeywords({ commit }, keywords) { 
+      return await axios.post(`/api/addKeywords`, keywords)
         .then(res => {
           console.log(res.data);
-          commit('addKeywords', keyword.newkey);
+          commit('addKeywords', keywords.newkeys);
         })
         .catch(error => console.log(error))
     },
     async deletekeyword({ commit }, keyid) {
+      
       return await axios.post(`/api/deleteKeywords`, keyid)
         .then(res => {
           commit('deleteKeywords', keyid);

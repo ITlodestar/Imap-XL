@@ -22,16 +22,19 @@ class KeywordController extends Controller
     }
     public function addkeywords(Request $request)
     {
-        $newkey = new Userkeywords;
-        $newkey->user_id = 1; // user id from sesson
-        $newkey->keyword =  $request['newkey'];
-        $newkey->save();
+        $arrayKeys = $request['newkeys'];
+        foreach ($arrayKeys as $value) {
+            $newkey = new Userkeywords;
+            $newkey->user_id = 1; // user id from sesson
+            $newkey->keyword =  $value;
+            $newkey->save();
+        }
         return json_encode(['success', "Add new keyword"]);
     }
     public function deleteKeywords(Request $request)
     {
         $newkey = Userkeywords::find($request['id']);
         $newkey->delete();
-        return json_encode(['success', "Add new keyword"]);
+        return json_encode(['success', "delete new keyword"]);
     }
 }

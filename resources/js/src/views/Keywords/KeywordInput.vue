@@ -27,9 +27,10 @@ import store from '../../store';
 export default {
   setup() {
     let keyInput = ref(null);
-    const KeyWordSave = () => {
-      console.log(keyInput.value);
-      store.dispatch('addKeywords', { newkey: keyInput.value });
+    const KeyWordSave = () => { 
+      let keyarray = keyInput.value.split(/\r\n|\r|\n/);
+      store.dispatch('addKeywords', { newkeys: keyarray });
+      keyInput.value = null;
     }
     return {
       keyInput,
