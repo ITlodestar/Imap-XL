@@ -7,7 +7,7 @@
       item-key="full_name" 
       class="table-rounded"
       >
-      <!-- status -->
+     
       <template #[`item.created_at`]="{ item }">
         <div class="d-flex align-center justify-center  ">
           <v-chip  class="font-weight-medium" outlined>
@@ -35,8 +35,6 @@ export default {
   },
   setup() {
     const formatDate = (date) => {
-      // let parsedata = parseInt(date)*1000;
-      console.log(date);
       let d = new Date(date),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\KeywordController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\WorkertaskController;
 
 
@@ -36,6 +37,10 @@ Route::post('/process', [DatabaseController::class, 'setProgress']);
 Route::get('/getworktasks/{id}', [WorkertaskController::class, 'getallWorktasks']);
 Route::get('/getworktask', [WorkertaskController::class, 'getWorktask']);
 
-// UserControllersetUsers
+// UserController
 Route::post('/addUser', [UserController::class, 'adduser']);
 Route::get('/getUser', [UserController::class, 'getuser']);
+
+// SettingsController
+Route::get('/getallsettings', [SettingsController::class, 'getSettings']);
+Route::post('/editsetting', [SettingsController::class, 'editsetting']);

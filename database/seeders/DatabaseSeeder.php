@@ -24,7 +24,12 @@ class DatabaseSeeder extends Seeder
         DB::table('settings')->insert([
             'id' => 1,
             'variable' => "task_0_size",
-            'value' => '3'
+            'value' => 3
+        ]);
+        DB::table('settings')->insert([
+            'id' => 2,
+            'variable' => "task_1_size",
+            'value' => 2
         ]);
     }
 }

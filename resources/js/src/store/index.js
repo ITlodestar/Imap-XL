@@ -10,6 +10,7 @@ const store = new Vuex.Store({
     database: [],
     keywords: [],
     Workstask: [],
+    settings: []
   },
   mutations: {
     //****User control******\\
@@ -62,6 +63,15 @@ const store = new Vuex.Store({
     },
     setUsers: (state, users) => {
       state.users = users;
+    },
+    // settgins
+    setSettings:(state, settings) => {
+      state.settings = settings;
+    },
+    updateSetting: (state, data) => {
+      state.settings.find( (item) => {
+        return item.id === data.id ? item.value = data.value : item.value
+      });
     }
   },
   actions: {
@@ -131,6 +141,7 @@ const store = new Vuex.Store({
     },
 
     //****Admin control******\\
+    // Users page
     async getusers({ commit }, username) {
       return await axios.get(`/api/getUser`)
         .then(res => {
@@ -144,6 +155,24 @@ const store = new Vuex.Store({
         .then(res => {
           commit('addUser', res.data);
           console.log(res.data);
+        })
+        .catch(error => console.log(error))
+    },
+    // settings page
+    async getSettings({ commit }) {
+      return await axios.get(`/api/getallsettings`)
+        .then(res => {
+          commit('setSettings', res.data);
+          console.log("Success: to get getSettings");
+        })
+        .catch(error => console.log(error))
+    },
+    async editSettings({ commit }, data) {
+      commit('updateSetting', data);
+      return await axios.post(`/api/editsetting`, data)
+        .then(res => {
+          commit('updateSetting', res.data);
+          console.log(res.data); 
         })
         .catch(error => console.log(error))
     },
