@@ -70,7 +70,7 @@ const store = new Vuex.Store({
     },
     updateSetting: (state, data) => {
       state.settings.find( (item) => {
-        return item.id === data.id ? item.value = data.value : item.value
+       item.id === data.id ? item.value = data.value : item.value
       });
     }
   },
