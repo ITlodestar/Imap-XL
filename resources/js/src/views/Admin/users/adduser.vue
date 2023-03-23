@@ -19,7 +19,11 @@
               <v-col cols="12" sm="6" class="layout justify-center align-center">
                 <div>
                   <label class="text-h5" for="username">Input new user name</label>
-                  <v-text-field id="username" label="Full name*" required></v-text-field>
+                  <v-text-field 
+                    id="username" 
+                    v-model="username"
+                    label="Full name*" 
+                    required></v-text-field>
                 </div>
               </v-col>
               <v-col cols="12" sm="4" md="6" class="d-none d-sm-flex justify-center position-relative">
@@ -31,11 +35,11 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
+          <v-btn color="success" variant="text" @click="AddUser()">
+            Create
+          </v-btn>
           <v-btn color="info" variant="text" @click="dialog = false">
             Close
-          </v-btn>
-          <v-btn color="success" variant="text" @click="dialog = false">
-            Save
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -44,31 +48,24 @@
 </template>
 
 <script>
+
 import { mdiAlertOutline, mdiCloudUploadOutline } from '@mdi/js'
 import { ref } from '@vue/composition-api';
-
+import store from '../../../store';
 
 export default {
-  props: {
-    accountData: {
-      type: Object,
-      default: () => { },
-    },
-  },
-  setup(props) {
-    const dialog = ref(false)
-    const status = ['Active', 'Inactive', 'Pending', 'Closed']
+  setup() {
+    const dialog = ref(false);
+    let username = ref(null);
 
-    const accountDataLocale = ref(JSON.parse(JSON.stringify(props.accountData)))
-
-    const resetForm = () => {
-      accountDataLocale.value = JSON.parse(JSON.stringify(props.accountData))
-    }
+    const AddUser = () => {
+      store.dispatch('addUser', username.value);
+      dialog.value = false;
+    } 
     return {
+      username,
       dialog,
-      status,
-      accountDataLocale,
-      resetForm,
+      AddUser,
       icons: {
         mdiAlertOutline,
         mdiCloudUploadOutline,

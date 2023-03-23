@@ -1,7 +1,9 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\KeywordController;
 use App\Http\Controllers\WorkertaskController;
@@ -33,3 +35,7 @@ Route::post('/process', [DatabaseController::class, 'setProgress']);
 // WorktaskController
 Route::get('/getworktasks/{id}', [WorkertaskController::class, 'getallWorktasks']);
 Route::get('/getworktask', [WorkertaskController::class, 'getWorktask']);
+
+// UserControllersetUsers
+Route::post('/addUser', [UserController::class, 'adduser']);
+Route::get('/getUser', [UserController::class, 'getuser']);

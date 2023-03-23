@@ -17,10 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('users')->insert([
             'id' => 1,
-            'login' => "user", 
-            'password' => 'password',
-            'created' => time(),
-            'tg' => '111'
+            'username' => "user", 
+            'password' => 'password'
         ]);
 
         DB::table('settings')->insert([

@@ -6,9 +6,10 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
+    users: [],
     database: [],
     keywords: [],
-    Workstask: []
+    Workstask: [],
   },
   mutations: {
     //****User control******\\
@@ -45,15 +46,23 @@ const store = new Vuex.Store({
       keyword.forEach(element => {
         let newkeyword = { id: startid, keyword: element, user_id: 1 };
         state.keywords.push(newkeyword);
-        startid ++;
+        startid++;
       });
-     
+
       console.log(state.keywords);
     },
     deleteKeywords: (state, data) => {
       let index = state.keywords.findIndex(keyword => keyword.id == data.id);
       state.keywords.splice(index, 1);
     },
+
+    //****Admin control******\\
+    addUser: (state, user) => {
+      state.users.push(user);
+    },
+    setUsers: (state, users) => {
+      state.users = users;
+    }
   },
   actions: {
     // test
@@ -104,7 +113,7 @@ const store = new Vuex.Store({
           .catch(error => console.log(error))
       }
     },
-    async addKeywords({ commit }, keywords) { 
+    async addKeywords({ commit }, keywords) {
       return await axios.post(`/api/addKeywords`, keywords)
         .then(res => {
           console.log(res.data);
@@ -113,13 +122,31 @@ const store = new Vuex.Store({
         .catch(error => console.log(error))
     },
     async deletekeyword({ commit }, keyid) {
-      
+
       return await axios.post(`/api/deleteKeywords`, keyid)
         .then(res => {
           commit('deleteKeywords', keyid);
         })
         .catch(error => console.log(error))
-    }
+    },
+
+    //****Admin control******\\
+    async getusers({ commit }, username) {
+      return await axios.get(`/api/getUser`)
+        .then(res => {
+          commit('setUsers', res.data);
+          console.log("Success: to get users");
+        })
+        .catch(error => console.log(error))
+    },
+    async addUser({ commit }, username) {
+      return await axios.post(`/api/addUser`, { username: username })
+        .then(res => {
+          commit('addUser', res.data);
+          console.log(res.data);
+        })
+        .catch(error => console.log(error))
+    },
   },
   modules: {},
 })

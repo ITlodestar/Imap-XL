@@ -26,7 +26,6 @@
 <script>
  
 export default {
- 
   props: {
     keywords: Array,
     deleteKeyword: Function
