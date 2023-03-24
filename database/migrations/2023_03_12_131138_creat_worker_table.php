@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('worker', function (Blueprint $table) {
             $table->id();
             $table->string('ip');
+            $table->string('apikey');
             $table->integer('keyword');
         });
     }
