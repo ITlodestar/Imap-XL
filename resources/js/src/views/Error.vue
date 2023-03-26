@@ -1,6 +1,6 @@
 <template>
   <div id="error">
-    404
+    <router-link :to="{ name: 'pages-login' }"> Back login page </router-link>
   </div>
 </template>
 
