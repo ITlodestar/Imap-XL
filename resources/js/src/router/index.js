@@ -33,7 +33,7 @@ const routes = [
     meta: { requiresAuth: true , roles: 0 }
   },
   {
-    path: '/pages/login',
+    path: '/login',
     name: 'pages-login',
     component: () => import('../views/pages/Login.vue'),
     meta: {
