@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import router from '../router'
 
 Vue.use(Vuex)
 
@@ -65,12 +66,12 @@ const store = new Vuex.Store({
       state.users = users;
     },
     // settgins
-    setSettings:(state, settings) => {
+    setSettings: (state, settings) => {
       state.settings = settings;
     },
     updateSetting: (state, data) => {
-      state.settings.find( (item) => {
-       item.id === data.id ? item.value = data.value : item.value
+      state.settings.find((item) => {
+        item.id === data.id ? item.value = data.value : item.value;
       });
     }
   },
@@ -167,15 +168,34 @@ const store = new Vuex.Store({
         })
         .catch(error => console.log(error))
     },
+
     async editSettings({ commit }, data) {
       commit('updateSetting', data);
       return await axios.post(`/api/editsetting`, data)
         .then(res => {
           commit('updateSetting', res.data);
-          console.log(res.data); 
+          console.log(res.data);
         })
         .catch(error => console.log(error))
     },
+
+    //- Login
+    async userlogin({ commit }, userinfo) {
+      return await axios.post(`/api/login`, userinfo )
+      .then(res => {
+        if(res.data == -2) {
+          console.log("There isn't user registed");
+        } else if(res.data == -1) {
+          console.log("Password is wrong");
+        } else {
+          localStorage.setItem('username', userinfo.username );
+          localStorage.setItem('role', res.data );
+          
+          router.push({name: "dashboard"});
+        }
+      })
+      .catch(error => console.log(error));
+    }
   },
   modules: {},
 })

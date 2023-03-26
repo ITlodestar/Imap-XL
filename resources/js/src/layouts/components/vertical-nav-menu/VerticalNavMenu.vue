@@ -32,13 +32,16 @@
       <nav-menu-link title="Databases" :to="{ name: 'dashboard' }" :icon="icons.mdiHomeOutline"></nav-menu-link> 
       <nav-menu-link title="Keywords" :to="{ name: 'keywords' }" :icon="icons.mdiAlphaTBoxOutline"></nav-menu-link>
       <nav-menu-link title="Saved Emails" :to="{ name: 'saveemail' }" :icon="icons.mdiEmailEditOutline"></nav-menu-link>
-      <nav-menu-link title="Test for Work tasks" :to="{ name: 'testWorkstask' }" ></nav-menu-link>
     </v-list>
-    <v-list expand shaped class="vertical-nav-menu-items pr-5">
+    <v-list expand shaped class="vertical-nav-menu-items pr-5" v-if="role == 1">
       <nav-menu-section-title title="Admin Panel"></nav-menu-section-title>
       <nav-menu-link title="Users" :to="{ name: 'adminusers' }" :icon="icons.mdiAccountCogOutline"></nav-menu-link> 
       <nav-menu-link title="Settings" :to="{ name: 'adminsettings' }" :icon="icons.mdiCogOutline"></nav-menu-link> 
-      <nav-menu-link title="login(test)" :to="{ name: 'pages-login' }" :icon="icons.mdiCogOutline"></nav-menu-link> 
+    </v-list>
+    <v-list expand shaped class="vertical-nav-menu-items pr-5">
+      <nav-menu-section-title title="Test"></nav-menu-section-title>
+      <nav-menu-link title="Test for Work tasks" :to="{ name: 'testWorkstask' }" ></nav-menu-link>
+      <nav-menu-link title="login page" :to="{ name: 'pages-login' }"  ></nav-menu-link> 
     </v-list>
   </v-navigation-drawer>
 </template>
@@ -56,6 +59,7 @@ import {
 import NavMenuSectionTitle from './components/NavMenuSectionTitle.vue'
 import NavMenuGroup from './components/NavMenuGroup.vue'
 import NavMenuLink from './components/NavMenuLink.vue'
+import { ref } from '@vue/composition-api'
 
 export default {
   components: {
@@ -70,7 +74,10 @@ export default {
     },
   },
   setup() {
+    const role = ref(localStorage.getItem('role'));
+    console.log(role);
     return {
+      role,
       icons: {
         mdiHomeOutline,
         mdiAlphaTBoxOutline,

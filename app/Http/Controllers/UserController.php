@@ -17,7 +17,7 @@ class UserController extends Controller
       $newuser->username = $request['username'];
       $randompwd = Str::random(8);
       $newuser->password = Hash::make($randompwd);
-
+      $newuser->role = 0;
       $newuser->save(); 
 
       $Userinfo = json_encode([
@@ -29,7 +29,25 @@ class UserController extends Controller
     }
     public function getuser()
     {
-      $users = User::where('role', 0);
+      $users = User::where('role', 0)->get();
       return  $users;
+    }
+    public function loginuser (Request $request)
+    {
+      $username = $request['username'];
+      $password =$request['password'];
+      
+      try {
+        $user = User::where('username', $username)->first();
+
+        if($user->count()) {
+          if(Hash::check($password, $user->password)) {
+              return $user->role;
+          }
+        }
+        return -1;
+      } catch (\Throwable $th) {
+        return -2;
+      }
     }
 }

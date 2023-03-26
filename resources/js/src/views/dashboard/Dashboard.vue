@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    
+    {{ $store.state.myinfo }}
     <v-col cols="12">
       <upload-input></upload-input>
     </v-col>

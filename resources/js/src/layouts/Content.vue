@@ -22,7 +22,7 @@
           </v-btn>
 
           <!-- Logout -->
-          <v-btn text >
+          <v-btn text @click="Logout()">
             <v-icon>{{ icons.mdiLogoutVariant }}</v-icon>
             <span class="ms-2">Logout</span>
           </v-btn>
@@ -55,6 +55,7 @@ import VerticalNavMenu from './components/vertical-nav-menu/VerticalNavMenu.vue'
 import ThemeSwitcher from './components/ThemeSwitcher.vue'
 import AppBarUserMenu from './components/AppBarUserMenu.vue'
 
+
 export default {
   components: {
     VerticalNavMenu,
@@ -63,10 +64,14 @@ export default {
   },
   setup() {
     const isDrawerOpen = ref(null)
-
+    const Logout = () => {
+      localStorage.setItem('username', '');
+      localStorage.setItem('role', -1);
+      window.location.href = '/pages/login';
+    }
     return {
       isDrawerOpen,
-
+      Logout,
       // Icons
       icons: {
         mdiMagnify,

@@ -22,6 +22,12 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('lodestar'),
             'role' => 1
         ]);
+        DB::table('users')->insert([
+            'id' => 2,
+            'username' => "user1",
+            'password' => Hash::make('user1'),
+            'role' => 0
+        ]);
 
         DB::table('settings')->insert([
             'id' => 1,

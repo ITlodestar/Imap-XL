@@ -25,6 +25,7 @@ use App\Http\Controllers\WorkertaskController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 // KeyworksController
 Route::get('/getKeywords', [KeywordController::class, 'getkeywords']);
 Route::post('/addKeywords', [KeywordController::class, 'addkeywords']);
@@ -38,6 +39,7 @@ Route::get('/getworktasks/{id}', [WorkertaskController::class, 'getallWorktasks'
 Route::get('/getworktask', [WorkertaskController::class, 'getWorktask']);
 
 // UserController
+Route::post('/login', [UserController::class, 'loginuser']);
 Route::post('/addUser', [UserController::class, 'adduser']);
 Route::get('/getUser', [UserController::class, 'getuser']);
 

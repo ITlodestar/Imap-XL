@@ -46,7 +46,7 @@
               @click:append="isPasswordVisible = !isPasswordVisible"
             ></v-text-field>
 
-            <v-btn block color="primary" class="mt-6"> Login </v-btn>
+            <v-btn block color="primary" class="mt-6" @click="Userlogin()"> Login </v-btn>
           </v-form>
         </v-card-text>
 
@@ -81,43 +81,23 @@
 
 <script>
 // eslint-disable-next-line object-curly-newline
-import { mdiFacebook, mdiTwitter, mdiGithub, mdiGoogle, mdiEyeOutline, mdiEyeOffOutline } from '@mdi/js'
+import { mdiEyeOutline, mdiEyeOffOutline } from '@mdi/js';
 import { ref } from '@vue/composition-api'
+import store from '../../store';
 
 export default {
   setup() {
     const isPasswordVisible = ref(false)
     const username = ref('')
     const password = ref('')
-    const socialLink = [
-      {
-        icon: mdiFacebook,
-        color: '#4267b2',
-        colorInDark: '#4267b2',
-      },
-      {
-        icon: mdiTwitter,
-        color: '#1da1f2',
-        colorInDark: '#1da1f2',
-      },
-      {
-        icon: mdiGithub,
-        color: '#272727',
-        colorInDark: '#fff',
-      },
-      {
-        icon: mdiGoogle,
-        color: '#db4437',
-        colorInDark: '#db4437',
-      },
-    ]
-
+    const Userlogin = () => {
+      store.dispatch('userlogin', { username: username.value, password: password.value });
+    }
     return {
       isPasswordVisible,
       username,
       password,
-      socialLink,
-
+      Userlogin,
       icons: {
         mdiEyeOutline,
         mdiEyeOffOutline,
