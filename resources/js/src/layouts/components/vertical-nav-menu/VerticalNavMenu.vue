@@ -38,6 +38,7 @@
       <nav-menu-section-title title="Admin Panel"></nav-menu-section-title>
       <nav-menu-link title="Users" :to="{ name: 'adminusers' }" :icon="icons.mdiAccountCogOutline"></nav-menu-link> 
       <nav-menu-link title="Settings" :to="{ name: 'adminsettings' }" :icon="icons.mdiCogOutline"></nav-menu-link> 
+      <nav-menu-link title="login(test)" :to="{ name: 'pages-login' }" :icon="icons.mdiCogOutline"></nav-menu-link> 
     </v-list>
   </v-navigation-drawer>
 </template>

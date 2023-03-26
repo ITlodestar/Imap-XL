@@ -48,14 +48,6 @@ const routes = [
     },
   },
   {
-    path: '/pages/register',
-    name: 'pages-register',
-    component: () => import('../views/pages/Register.vue'),
-    meta: {
-      layout: 'blank',
-    },
-  },
-  {
     path: '/error-404',
     name: 'error-404',
     component: () => import('../views/Error.vue'),

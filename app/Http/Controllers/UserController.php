@@ -29,6 +29,7 @@ class UserController extends Controller
     }
     public function getuser()
     {
-      return User::all();
+      $users = User::where('role', 0);
+      return  $users;
     }
 }
