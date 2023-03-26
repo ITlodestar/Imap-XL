@@ -78,7 +78,6 @@ router.beforeEach((to, from, next) => {
   const currentUser = {name: localStorage.getItem('username'), role: localStorage.getItem('role')};
   const roles = to.meta.roles;
  
-  console.log(!!(requiresAuth && currentUser)); 
   if (requiresAuth && currentUser.name === '') {
     next('/login')
   } else if (requiresAuth && currentUser) {
