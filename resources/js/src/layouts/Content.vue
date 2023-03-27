@@ -67,7 +67,7 @@ export default {
     const Logout = () => {
       localStorage.setItem('username', '');
       localStorage.setItem('role', -1);
-      window.location.href = 'login';
+      window.location.href = '/login';
     }
     return {
       isDrawerOpen,
