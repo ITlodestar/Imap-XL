@@ -73,7 +73,7 @@ class Kernel extends ConsoleKernel
         $index = 0;
         $total = 0;
         $settings = new SettingsController;
-        $size = $settings->get_settings('task_0_size');
+        $size = $settings->get_setting_specific('task_0_size');
 
         foreach ($content as $value) {
             array_push($group, $value);

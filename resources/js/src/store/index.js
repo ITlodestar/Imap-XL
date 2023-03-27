@@ -82,6 +82,7 @@ const store = new Vuex.Store({
         return await axios.get(`/api/getworktasks/all`)
           .then(res => {
             console.log("successfull: to get all Tasks data");
+            // console.log(res.data);
             commit('setWorktask', res.data)
           })
           .catch(error => console.log(error))
@@ -190,7 +191,7 @@ const store = new Vuex.Store({
         } else {
           localStorage.setItem('username', userinfo.username );
           localStorage.setItem('role', res.data );
-          
+
           router.push({name: "dashboard"});
         }
       })

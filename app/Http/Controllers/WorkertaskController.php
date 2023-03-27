@@ -27,6 +27,7 @@ class WorkertaskController extends Controller
         
         $databaseid = $id; 
         $worktasks = [];
+        
         if($databaseid == 'all') {
             $worktasks = Workertask::all();
         }
