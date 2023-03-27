@@ -74,7 +74,7 @@
       class="auth-tree-3"
       width="377"
       height="289"
-      :src="require('@/assets/images/misc/tree-3.png').default"
+      :src="require('@/assets/images/misc/login.png').default"
     ></v-img>
   </div>
 </template>

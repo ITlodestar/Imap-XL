@@ -45,12 +45,19 @@
     }
   }
 }
+@media (max-width: 1200px) {
+  // auth bg and tree hide in sm screen
+  .auth-v1 {
+    .auth-tree-3 {
+      display: none;
+    }
+  }
+}
 
 @media (max-width: 600px) {
   // auth bg and tree hide in sm screen
   .auth-v1 {
-    .auth-tree,
-    .auth-tree-3,
+    .auth-tree, 
     .auth-mask-bg {
       display: none;
     }
