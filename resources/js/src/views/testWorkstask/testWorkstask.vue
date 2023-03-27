@@ -24,7 +24,7 @@ export default {
           sortable: false,
         },
         { text: 'database_id', value: 'database_id' },
-        { text: 'Status', value : 'Status'},
+        { text: 'Status', value : 'status'},
         { text: 'Task type', value: 'task_type' },
         { text: "task_body", value : 'task_body'},
         { text: 'timestart', value : 'timestart'},
