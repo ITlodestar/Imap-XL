@@ -20,7 +20,9 @@ const store = new Vuex.Store({
     setWorktask: (state, data) => {
       state.Workstask = data;
     },
-
+    deleteWorktask:(state) => {
+      state.Workstask = [];
+    },
     //====== database
     setDatabase: (state, database) => {
       state.database = database;
@@ -82,13 +84,21 @@ const store = new Vuex.Store({
         return await axios.get(`/api/getworktasks/all`)
           .then(res => {
             console.log("successfull: to get all Tasks data");
-            // console.log(res.data);
-            commit('setWorktask', res.data)
+            commit('setWorktask', res.data);
           })
           .catch(error => console.log(error))
       }
     },
-
+    async Deletealltasks({ commit }) {
+      if (this.state.Workstask !== []) {
+        return await axios.get(`/api/deleteworktasks/all`)
+          .then(res => {
+            console.log("successfull: to delete all Tasks data"); 
+            commit('deleteWorktask')
+          })
+          .catch(error => console.log(error))
+      }
+    },
 
     // Database
     async getDatabase({ commit }) {

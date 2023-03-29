@@ -42,7 +42,8 @@ class WorkertaskController extends Controller
         return $tasks;
     }
 
-    public function getWorktask(Request $request) {
+    public function getWorktask(Request $request)
+    {
        
         $worktasks = Workertask::where("status", 0)->first();
         $worktasks->status = 1;
@@ -51,5 +52,11 @@ class WorkertaskController extends Controller
         $returnArray = array('body' => $worktasks->task_body, 'uuid' => $worktasks->uuid);
         
         return json_encode($returnArray);
+    }
+
+    public function deleteworktasks(Request $request)
+    {
+        Workertask::truncate();
+        return "success";
     }
 }

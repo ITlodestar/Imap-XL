@@ -1,6 +1,15 @@
 <template>
   <v-card>
-    <h1 class="text-center"> Test Work tasks </h1>
+  
+    <div class="d-flex justify-center">
+      <h1 class="text-center"> Test Work tasks </h1>
+      <v-btn color="error" class="ml-5 " @click="Deleteall()">
+        <v-icon>
+          {{ icons.mdiCancel }}
+        </v-icon>
+        <span class="d-none d-sm-block">Delete all tasks</span>
+      </v-btn>
+    </div>
     <v-data-table 
       :headers="headers" 
       :items="$store.state.Workstask" 
@@ -13,11 +22,16 @@
 <script>
 
 import store from '../../store'
+import { mdiCancel } from '@mdi/js'
 
 export default {
   store,
   setup() {
+    const Deleteall = () => {
+      store.dispatch('Deletealltasks');
+    }
     return {
+      Deleteall,
       headers: [
         {
           text: 'id', value: 'id', align: 'center',
@@ -30,6 +44,9 @@ export default {
         { text: 'timestart', value : 'timestart'},
         { text: 'timefinish', value : 'timefinish'},
       ],
+      icons: {
+        mdiCancel
+      }
     }
   },
   created: function () {

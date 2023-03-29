@@ -36,6 +36,7 @@ Route::post('/process', [DatabaseController::class, 'setProgress']);
 
 // WorktaskController
 Route::get('/getworktasks/{id}', [WorkertaskController::class, 'getallWorktasks']);
+Route::get('/deleteworktasks/{id}', [WorkertaskController::class, 'deleteworktasks']);
 Route::get('/getworktask', [WorkertaskController::class, 'getWorktask']);
 
 // UserController
