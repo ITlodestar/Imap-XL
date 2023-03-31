@@ -1,10 +1,9 @@
 <?php
 
-
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\DatabaseController;
+use App\Http\Controllers\EmailController;
 
 
 /*
@@ -22,6 +21,7 @@ use App\Http\Controllers\DatabaseController;
 
 // DatabaseController
   Route::post('/uploadfile', [DatabaseController::class, 'fileUpload']);
+  Route::post('/recievegood', [EmailController ::class, 'Saveresult']);
 
 
 // Vue Route..
